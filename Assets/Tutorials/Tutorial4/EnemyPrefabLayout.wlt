@@ -427,7 +427,7 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Prefabs
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\veran\Workspace\Unity\Nia Mondo
+  m_LastProjectPath: D:\dev\cambio-climatico
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
