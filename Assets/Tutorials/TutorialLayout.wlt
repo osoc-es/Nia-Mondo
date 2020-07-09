@@ -427,7 +427,7 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/FPS
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: D:\dev\cambio-climatico
+  m_LastProjectPath: C:\Git\cambio-climatico
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
