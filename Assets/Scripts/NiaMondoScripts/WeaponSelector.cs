@@ -23,6 +23,7 @@ public class WeaponSelector : MonoBehaviour
 
     private ScriptableWeapons currentWeapon;
 
+    private GameObject player;
 
     private void Start()
     {
@@ -31,6 +32,8 @@ public class WeaponSelector : MonoBehaviour
         
         badWeaponButton.onClick.AddListener(BadWeaponSelected);
         goodWeaponButton.onClick.AddListener(GoodWeaponSelected);
+
+        player = GameObject.FindGameObjectWithTag("Player");
 
     }
 
@@ -63,6 +66,7 @@ public class WeaponSelector : MonoBehaviour
         selectorCanvas.SetActive(false);
         Time.timeScale = 1.0f;
         gameObject.SetActive(false);
+        player.GetComponent<PlayerWeaponController>().SetWeapon(currentWeapon);
     }
     
     private void SetSelectionText(string weaponName){

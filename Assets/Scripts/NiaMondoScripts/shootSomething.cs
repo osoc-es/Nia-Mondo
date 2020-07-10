@@ -9,16 +9,21 @@ public class shootSomething : MonoBehaviour
 	public Vector2 velocity;
 	bool canShoot = true;
 	public Vector2 offset = new Vector2(0.4f, 0.1f);
-	public float cooldown = 1f;
+	//private float cooldown = 1f;
 	float initialPos;
 	float actualPos;
 	float lastVel;
+
+	public Transform weaponHolder;
+
+	private PlayerWeaponController weaponController;
    
    
     // Start is called before the first frame update
     void Start()
     {
           initialPos=transform.position.x;
+		  weaponController = GetComponent<PlayerWeaponController>();
     }
 
     // Update is called once per frame
@@ -26,7 +31,8 @@ public class shootSomething : MonoBehaviour
     {
     	int isRight = checkDirection();
     	float vel = velocity.x;
-        if(Input.GetKeyDown(KeyCode.T) && canShoot){
+        if(Input.GetKeyDown(KeyCode.T) && canShoot)
+		{
         	
         	if(isRight!=0){
         		vel = vel*isRight;
@@ -35,6 +41,7 @@ public class shootSomething : MonoBehaviour
         		}
         	GameObject go =  (GameObject)Instantiate(projectile, (Vector2)transform.position+offset*isRight, Quaternion.identity);
             go.GetComponent<Rigidbody2D> ().velocity = new Vector2 (vel, velocity.y);
+			StartCoroutine(CanShoot());
         }
         initialPos=actualPos;
         lastVel = vel;
@@ -43,7 +50,7 @@ public class shootSomething : MonoBehaviour
     IEnumerator CanShoot()
     {
     	canShoot = false;
-    	yield return new WaitForSeconds(cooldown);
+    	yield return new WaitForSeconds(weaponController.GetWeapon().cooldown);
     	canShoot = true;
     }
     
@@ -58,4 +65,5 @@ public class shootSomething : MonoBehaviour
     		return -1;
     	}
     }
+
 }
