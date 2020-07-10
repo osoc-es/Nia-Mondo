@@ -33,7 +33,7 @@ public class WeaponSelector : MonoBehaviour
         badWeaponButton.onClick.AddListener(BadWeaponSelected);
         goodWeaponButton.onClick.AddListener(GoodWeaponSelected);
 
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("arbo");
 
     }
 
@@ -66,6 +66,9 @@ public class WeaponSelector : MonoBehaviour
         selectorCanvas.SetActive(false);
         Time.timeScale = 1.0f;
         gameObject.SetActive(false);
+        #if UNITY_EDITOR
+        Debug.Log(player);
+        #endif
         player.GetComponent<PlayerWeaponController>().SetWeapon(currentWeapon);
     }
     
