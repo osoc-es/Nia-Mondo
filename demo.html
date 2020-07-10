@@ -1,0 +1,2038 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>LAZAN</title>
+	<link rel="stylesheet" href="css/style.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="script/javascript/javascr.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <!-- Google -->
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script> <!-- Microsoft -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+	<!--modals-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!--jQuery -->
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HEADER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<header>
+		<div class="col-7 col-s-12">
+			<a href="index.html"> <img src="img/logo.png" alt="Logo Nia Mondo" id="logo"></a>
+		</div>
+
+		<div class="col-5 col-s-12">
+			<ul id="reglog">
+				<li id="menu"> <a href="#index"> Inicio </a> </li>
+				<li id="menu"> <a href="#demo">Demo</a> </li>
+        <li id="menu"> <a href="#team">Equipo</a> </li>
+			</ul>
+		</div>
+
+	</header>
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ NAVIGATION BAR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<div id="navigationbar">
+		<ul id="navigation">
+			<li><a class="btns active" onclick="displayHome()" href="#Home">Home</a></li>
+			<li><a class="btns" onclick="displaySearch()" href="#Search">Search</a></li>
+			<li><a class="btns" onclick="displayHotels()" href="#Hotels">Hotels</a></li>
+			<li><a class="btns" onclick="displayExperiences()" href="#Experiences">Experiences</a></li>
+		</ul>
+	</div>
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEARCH ENGINE AND PARAMETERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<div id="searchBoxHotels">
+		<div id="searchEngine" class="row-edit">
+			<form name="searchFormHotels">
+				<div class="search-container">
+					<input type="text" placeholder="Search..." name="search" id="searchInputHotels" autocomplete="off">
+					<button type="submit" onclick="searchResultsHotels()"><i class="fa fa-search"></i></button>
+				</div>
+				<div class="searchParameters">
+					<label><b>Check-in date: &nbsp; </b></label>
+					<input class="col-10" type="date" name="date1" required><br>
+				</div>
+				<div class="searchParameters">
+					<label><b>Check-out date: &nbsp; </b></label>
+					<input class="col-10" type="date" name="date2" required><br>
+				</div>
+				<div class="searchParameters">
+					<label><b>Keywords: &nbsp; </b></label>
+					<input class="col-10" type="text" name="keyword" required><br>
+				</div>
+				<div class="searchParameters" style="height:85.433px">
+					<label><b>Price range: &nbsp; </b></label>
+					<input type="range" name="price" id="priceInput" min="0" max="300" step="5" value="100" oninput="priceOutput.value = priceInput.value">
+					<output name="priceOutput" id="priceOutput">100</output>
+				</div>
+				<div class="smallSearchParameters">
+					<label><b>Adults: &nbsp; </b></label>
+					<select class="f1to30"></select>
+				</div>
+				<div class="smallSearchParameters">
+					<label><b>Children: &nbsp; </b></label>
+					<select class="f0to30"></select>
+				</div>
+				<div class="smallSearchParameters">
+					<label><b>Rooms: &nbsp; </b></label>
+					<select class="f1to15"></select>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div id="searchBoxExperiences">
+		<div id="searchEngine" class="row-edit">
+			<form name="searchFormExperiences">
+				<div class="search-container">
+					<input type="text" placeholder="Search..." name="search" id="searchInputExperiences" autocomplete="off">
+					<button type="submit" onclick="searchResultsExperiences()"><i class="fa fa-search"></i></button>
+				</div>
+				<div class="searchParameters">
+					<label><b>Date: &nbsp; </b></label>
+					<input class="col-10" type="date" name="date1" required><br>
+				</div>
+				<div class="searchParameters">
+					<label><b>Keywords: &nbsp; </b></label>
+					<input class="col-10" type="text" name="keyword" required><br>
+				</div>
+				<div class="searchParameters" style="height:85.433px">
+					<label><b>Price range: &nbsp; </b></label>
+					<input type="range" name="price" id="priceInput" min="0" max="300" step="5" value="100" oninput="priceOutput.value = priceInput.value">
+					<output name="priceOutput" id="priceOutput">100</output>
+				</div>
+				<div class="smallSearchParameters">
+					<input type="checkbox" name="typeEx1" class="check" value="Family" checked> Family<br>
+					<input type="checkbox" name="typeEx2" class="check" value="Couple"> Couple<br>
+					<input type="checkbox" name="typeEx3" class="check" value="Adventure"> Adventure<br>
+					<input type="checkbox" name="typeEx4" class="check" value="Nature"> Nature<br><br>
+				</div>
+				<div id="participantSearchParameters">
+					<label><b>Participants: &nbsp; </b></label>
+					<select class="f1to15Group"></select>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ARTICLE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<div class="row-edit">
+		<article>
+			<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ GALLERY ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+			<div class="Gcontainer" id="mixedSlider">
+				<h1> Explore places:</h1><br><br><br><br>
+				<div class="MS-content">
+					<div class="item">
+						<div class="imgTitle">
+							<h2 class="blogTitle">Ilunion Atrium</h2>
+							<img src="images/hotel1.png" alt=""/>
+						</div>
+						<p>Ilunion Atrium in Madrid, Spain is a 4-star hotel located in the city, but also close to the airport. The
+							hotel has free wifi and a restaurant.</p>
+						<a href="#" onclick="displayIlunion()">Read More</a>
+					</div>
+					<div class="item">
+						<div class="imgTitle">
+							<h2 class="blogTitle">Fellina</h2>
+							<img src="images/restaurante1.png" alt="" />
+						</div>
+						<p>Fellina is a tradicional italian restaurant located in Chamberi. They serve homemade pasta and fried pizza, a
+							classic from Napoli.</p>
+						<a href="#" onclick="displayFellina()">Read More</a>
+					</div>
+					<div class="item">
+						<div class="imgTitle">
+							<h2 class="blogTitle">Retiro Park</h2>
+							<img src="images/parque1.png" alt="" />
+						</div>
+						<p>The Retiro park is a nice, gigantic park very close to the center of Madrid. Has many playgrounds for children
+							and street performers. </p>
+						<a href="#" onclick="displayRetiro()">Read More</a>
+					</div>
+					<div class="item">
+						<div class="imgTitle">
+							<h2 class="blogTitle">Hotel Francisco I</h2>
+							<img src="images/hotel2.png" alt="" />
+						</div>
+						<p>Francisco I is a modern, very comfortable hotel in the center of the city. Most bedrooms have terraces with
+							fantastic views.</p>
+						<a href="#" onclick="displayFrancisco()">Read More</a>
+					</div>
+					<div class="item">
+						<div class="imgTitle">
+							<h2 class="blogTitle">Cocina Arcoirirs</h2>
+							<img src="images/restaurante2.png" alt="" />
+						</div>
+						<p>Cool restaurant adapted to vegans, lactose, and gluten intolerants. Homemade food, always with a vegie side
+							dish, and dishes with an exotic turn!</p>
+						<a href="#" onclick="displayCocina()">Read More</a>
+					</div>
+				</div>
+				<div class="MS-controls">
+					<button class="MS-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+					<button class="MS-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+				</div>
+			</div>
+
+			<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HOTEL INFO ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+			<div class="establishmentInfo" id="establishmentInfo">
+				<!-- ILUNION ATRIUM -->
+				<div class="moreInfo" id="ilunionInfo">
+					<div class="establishmentHeader">
+						<div class="establishmentPic"><img src="images/hotel1.png" alt="" id="imageIlunion"/></div>
+						<div class="establishmentDetails">
+							<h2>Ilunion Atrium</h2>
+							<p>Overall score: <img src="images/search/stars/entera.png" alt="star" class="services">
+								<img src="images/search/stars/entera.png" alt="star" class="services">
+								<img src="images/search/stars/entera.png" alt="star" class="services">
+								<img src="images/search/stars/entera.png" alt="star" class="services">
+								<img src="images/search/stars/media.png" alt="star" class="services"></p>
+							<p id="locationIlunion">Location: Calle de Emilio Vargas, 3-5, Madrid, Spain</p>
+							<p>Click <b><u><a href="https://www.ilunionhotels.com/hotel-ilunion-atrium-en-madrid/">here</a></b></u> to visit
+								their website.</p>
+						</div>
+						<div class="establishmentOptions">
+							<button type="button" class="reservationButton" onclick="reservationIlunion()">Make a reservation</button><br>
+							<button type="button" class="reviewButton" onclick="reviewIlunion()">Write a review</button>
+						</div>
+					</div>
+					<div class="establishmentOpinions">
+						<div class="opinion">
+							<h3>Opinion by @johnadams</h3>
+							<p>This hotel is inside the city but relatively close to the airport, a 10 min ride.
+								There is a short commute to the center of the city. The hotel has many facilities
+								available for the clients, such as a swimming pool, a gym, a relaxing area, a
+								restaurant, as well as free wifi connection.</p>
+						</div>
+						<div class="opinion">
+							<h3>Opinion by @juliaevans</h3>
+							<p>nice hotel, location and transportation very easy, local restaurant are easy to get
+								to and you can seat along the beaches all day relaxing.Nice breakfast and friendly
+								staff and answered all questions by making efforts to communicate in English. You
+								can rent a bike at the hotel but to a high price! The hotel was excelent, but a primitive gym. </p>
+						</div>
+						<div class="opinion">
+							<h3>Opinion by @faridwanis</h3>
+							<p>Hotel is really nice (I don't get why it's considered two stars). Location is great, you can walk
+								to major attractions and have an easy access to subway. Rooms are clean and organized. Reception
+								is polite. Downsides are the room design (bathroom has a slide door which is never really closed)
+								and breakfast that is quite expensive in my opinion.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- FELLINA -->
+				<div class="moreInfo" id="fellinaInfo">
+					<div class="establishmentHeader">
+						<div class="establishmentPic"><img src="images/restaurante1.png" alt="" id="imageFellina"/></div>
+						<div class="establishmentDetails">
+							<h2>Fellina</h2>
+							<p>Overall score: <img src="images/search/stars/entera.png" alt="star" class="services">
+								<img src="images/search/stars/entera.png" alt="star" class="services">
+								<img src="images/search/stars/entera.png" alt="star" class="services">
+								<img src="images/search/stars/entera.png" alt="star" class="services">
+								<img src="images/search/stars/vacia.png" alt="star" class="services"></p>
+							<p id="locationFellina">Location: Calle de Caracas, 21, 28010 Madrid</p>
+							<p>Click <b><u><a href="https://www.tripadvisor.es/Restaurant_Review-g187514-d12934099-Reviews-Fellina-Madrid.html">here</a></b></u>
+								to visit their website.</p>
+						</div>
+						<div class="establishmentOptions">
+							<button type="button" class="reservationButton" onclick="reservationFellina()">Make a reservation</button><br>
+							<button type="button" class="reviewButton" onclick="reviewFellina()">Write a review</button>
+						</div>
+					</div>
+					<div class="establishmentOpinions">
+						<div class="opinion">
+							<h3>Opinion by @karensmith</h3>
+							<p>My favorite Italian restaurant in Madrid. Excellent food. Real Italian cooking and ingredients.
+								Very fresh. Great atmosphere. Authentic and awesome. Pasta is wonderful, great charcuterie appetizers,
+								and breads. Highly recommended. Staff are really friendly and the terrace is pleasantly decorated.
+								However, the food is not up to standards.</p>
+						</div>
+						<div class="opinion">
+							<h3>Opinion by @miguelmesa</h3>
+							<p>Staff are really friendly and the terrace is pleasantly decorated. However, the food is not up to standards.
+								Both risotto and a pasta dish were too cooked. Also we didn't have a good digestion. A thing we didn't like
+								is that you're charged 1,50 euros for water from the tap (supposedly purified before coming to the table).
+								It's a pity, because, as said, the place is beautifully decorated, but we will not come back</p>
+						</div>
+						<div class="opinion">
+							<h3>Opinion by @alvarovisus</h3>
+							<p>This was a neighborhood restaurant that we wandered into as we roamed the neighborhood. We made a reservation
+								for the next evening and were not disappointed. Food and service were excellent. The Pasta Carbonara was some
+								of the best I have ever had. Highly recommend it and within walking distance just up the block from the hotel.
+								So very convenient.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- RETIRO PARK -->
+				<div class="moreInfo" id="retiroInfo">
+					<div class="establishmentHeader">
+						<div class="establishmentPic"><img src="images/parque1.png" alt="" id="imageRetiro"/></div>
+						<div class="establishmentDetails">
+							<h2>Retiro Park</h2>
+							<p>Overall score: <img src="images/search/stars/entera.png" alt="star" class="services">
+								<img src="images/search/stars/entera.png" alt="star" class="services">
+								<img src="images/search/stars/entera.png" alt="star" class="services">
+								<img src="images/search/stars/entera.png" alt="star" class="services">
+								<img src="images/search/stars/entera.png" alt="star" class="services"></p>
+							<p id="locationRetiro">Location: Plaza de la Independencia, 7, 28001 Madrid</p>
+							<p>Click <b><u><a href="https://es.wikipedia.org/wiki/Parque_del_Retiro_de_Madrid">here</a></b></u> to visit
+								their website.</p>
+						</div>
+						<div class="establishmentOptions">
+							<button type="button" class="reservationButton" onclick="reservationRetiro()">Make a reservation</button><br>
+							<button type="button" class="reviewButton" onclick="reviewRetiro()">Write a review</button>
+						</div>
+					</div>
+					<div class="establishmentOpinions">
+						<div class="opinion">
+							<h3>Opinion by @hannaevans</h3>
+							<p>This is a very large park in the center of Madrid, near the Puerta de Alcala, Cibeles Fountain and El Prado
+								Museum. It has a large lake in which you can row a rented boat or watch others doing it. Bathrooms exist
+								but they are hidden without any signs leading you to them. They are underground between a gazebo and the boat
+								rental section of the lake which is on the calle Alcala side of the park. You can walk for a good hour or two
+								in this park.</p>
+						</div>
+						<div class="opinion">
+							<h3>Opinion by @juliaevans</h3>
+							<p>I have been studying in Madrid for a semester now. Retiro Park is my absolute favorite place in Madrid.
+								It’s just a quick walk from my apartment and every time I go there I see something new.
+								The park is massive and people are always out doing some kind of activities. You could spend hours exploring
+								the park. Highly recommend.</p>
+						</div>
+						<div class="opinion">
+							<h3>Opinion by @juliaevans</h3>
+							<p>We arrived to El Retiro without expecting more than a park , a collection of trees and that is it. However,
+								El Retiro was an awakening of senses. Beautiful trails fulfilled wit orange, gold and brownish colors,
+								the sound of the wind making symphonies between the trees, a lake full of young couples walking around the
+								water or spending time floating inside a boat and catching the autumnal sunlight.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- HOTEL FRANCISCO I -->
+				<div class="moreInfo" id="franciscoInfo">
+					<div class="establishmentHeader">
+						<div class="establishmentPic"><img src="images/hotel2.png" alt="" id="imageFrancisco"/></div>
+						<div class="establishmentDetails">
+							<h2>Hotel Francisco I</h2>
+							<p>Overall score: <img src="images/search/stars/entera.png" alt="star" class="services">
+								<img src="images/search/stars/entera.png" alt="star" class="services">
+								<img src="images/search/stars/entera.png" alt="star" class="services">
+								<img src="images/search/stars/entera.png" alt="star" class="services">
+								<img src="images/search/stars/vacia.png" alt="star" class="services"></p>
+							<p id="locationFrancisco">Location: Calle del Arenal, 15, 28013 Madrid</p>
+							<p>Click <b><u><a href="https://www.hotelfrancisco.com/es/">here</a></b></u> to visit their website.</p>
+						</div>
+						<div class="establishmentOptions">
+							<button type="button" class="reservationButton" onclick="reservationFrancisco()">Make a reservation</button><br>
+							<button type="button" class="reviewButton" onclick="reviewFrancisco()">Write a review</button>
+						</div>
+					</div>
+					<div class="establishmentOpinions">
+						<div class="opinion">
+							<h3>Opinion by @johnadams</h3>
+							<p>Conveniently located for those flying in and/or out from the airport - there's a direct bus to the airport,
+								which is a few stops away. The room was very spacious and very comfortable, I really enjoyed it. Nice decor,
+								oo. What I disliked was some sort of mechanic rumour I could hear, which sounded like elevator door
+								(although my room wasn't close to an elevator). </p>
+						</div>
+						<div class="opinion">
+							<h3>Opinion by @juliaevans</h3>
+							<p>This hotel is idealy placed from airport.. the level of service is low. no bathrobe in room. no slippers.
+								coffee bowl not cleaned at room. food average. sure there must be better. room ok and clean. reception fine.
+								Guest's privacy at a hotel is the highest principal, I believe. That sort of behaviour doesn't make the guest
+								feel very comfortable or welcomed. Overall, however, I would probably stay there again. </p>
+						</div>
+						<div class="opinion">
+							<h3>Opinion by @paulagarcia</h3>
+							<p>Luckily to us this hotel had much more to offer than many 4 stars hotels I have seen. It is a beautiful
+								small property extremely well maintained with beautiful cute details such as flavored water at entrance and a
+								beautiful smoking areas in front of the hotel ( unfortunately we could not benefit from much, since the
+								municipality
+								was doing some construction work in the area) beds and pillows are super comfy with memory foam toppers on top
+								of mattresses,
+								some bathrooms with 2 sinks which is great if you are sharing the room . </p>
+						</div>
+					</div>
+				</div>
+
+				<!-- COCINA ARCOIRIS -->
+				<div class="moreInfo" id="cocinaInfo">
+					<div class="establishmentHeader">
+						<div class="establishmentPic"><img src="images/restaurante2.png" alt="" id="imageCocina"/></div>
+						<div class="establishmentDetails">
+							<h2>Cocina Arcoiris</h2>
+							<p>Overall score: <img src="images/search/stars/entera.png" alt="star" class="services">
+								<img src="images/search/stars/entera.png" alt="star" class="services">
+								<img src="images/search/stars/entera.png" alt="star" class="services">
+								<img src="images/search/stars/vacia.png" alt="star" class="services">
+								<img src="images/search/stars/vacia.png" alt="star" class="services"></p>
+							<p id="locationCocina">Location: Plaza de Olavide, 2, 28010 Madrid</p>
+							<p>Click <b><u><a href="https://mundoarcoiris.com/cocina-del-arcoiris.html">here</a></b></u> to visit their
+								website.</p>
+						</div>
+						<div class="establishmentOptions">
+							<button type="button" class="reservationButton" onclick="reservationCocina()">Make a reservation</button><br>
+							<button type="button" class="reviewButton" onclick="reviewCocina()">Write a review</button>
+						</div>
+					</div>
+					<div class="establishmentOpinions">
+						<div class="opinion">
+							<h3>Opinion by @tonicaro</h3>
+							<p>The Cocina Arcoiris is a neighborhood cateteria/bar/restaurant offering a menu del dia with far more
+								choices
+								than any other restaurant of this sort that we've ever eaten in. (All menus del dia include a choice of first
+								and
+								second courses, dessert or coffee, bread and wine, beer or soda.) Most restaurants offer three or four choices
+								of
+								first and second courses; here the number is double that. You also can choose two first courses instead of one
+								each,
+								if you prefer.</p>
+						</div>
+						<div class="opinion">
+							<h3>Opinion by @rachel</h3>
+							<p>We've been here dozens of times and for the most part think the food is very good, the price very reasonable
+								and the
+								staff, mostly family, do a great job. The owner loves trying new dishes influenced by ideas garnered during his
+								travels
+								abroad. This is not an upscale, tourist restaurant; it is a local place and usually quite busy at lunch time.
+								We love
+								checking out the daily choices and usually pop in for lunch about once a week when we are in Madrid.</p>
+						</div>
+						<div class="opinion">
+							<h3>Opinion by @ericson</h3>
+							<p>This no-fills restaurant offers a good menu of the day, which is when it does most of its business, apart
+								from coffee
+								and croissants at breakfast. Clean modern cafetería style and serves up tasty home made food. Bread and other
+								dishes
+								are sold.This restaurant should not be rated against deluxe, date night, family celebration restaurants but
+								within the
+								category of menu of the day neighborhood lunch venues and within that category I give it a high recommendation.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ RESERVATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+			<div class="reservation" id="reservation">
+				<!-- ILUNION ATRIUM -->
+				<div class="establishmentReservation" id="ilunionReservation">
+					<div class="reservationHeader">
+						<div class="reservationPic"><img src="images/hotel1.png" alt="" /></div>
+						<div class="reservationTitle">
+							<h1>Book for Ilunion Atrium</h1>
+						</div>
+
+					</div>
+					<div class="progressbarContainer">
+						<ul class="progressbar">
+							<li id="firstStepPBilunion"><b>Select Your Room</b></li>
+							<li id="secondStepPBilunion"><b>Enter Your Personal Info</b></li>
+							<li id="thirdStepPBilunion"><b>Enter Your Payment information</b></li>
+						</ul>
+					</div>
+					<div class="reservationBody">
+						<div class="reservationBodySection" id="roomSelilunion">
+							<h2>Select Your Room</h2>
+							<div class="roomSelectionBody">
+								<div class="reservationArrivalDate">
+									<label><b>Arrival Date: &nbsp; </b></label><br>
+									<input class="col-10" type="date" name="aDateIlunion" id="aDateIlunion" required>
+								</div>
+								<div class="reservationCheckOutDate">
+									<label><b>Check Out Date: &nbsp; </b></label><br>
+									<input class="col-10" type="date" name="cDateIlunion" id="cDateIlunion" required>
+								</div>
+								<div class="extraInfo">
+									<label><b>Additional Information: &nbsp; </b></label><br>
+									<textarea rows="4" cols="30"></textarea>
+								</div>
+								<div class="adultsSelector">
+									<label><b>Adults: &nbsp; </b></label>
+									<select class="f1to30"></select>
+								</div>
+								<div class="childSelctor">
+									<label><b>Childs: &nbsp; </b></label>
+									<select class="f1to30"></select>
+								</div>
+								<div class="nextButtonDiv">
+									<button type="button" class="roomSelButton" onclick="displayIlunion()">Cancel</button>
+									<button type="button" class="roomSelButton" onclick="roomSelNextilunion()">Next</button><br>
+								</div>
+							</div>
+						</div>
+						<div class="reservationBodySection" id="persInfoilunion">
+							<h2>Enter Your Personal Information</h2>
+							<div class="personalInfoBody">
+								<div class="personalInfoInput">
+									<label><b>First Name: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="fNameIlunion" id="fNameIlunion">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Last Name: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="lNameIlunion" id="lNameIlunion">
+								</div>
+
+								<div class="personalInfoInput">
+									<label><b>Date of Birth: &nbsp; </b></label><br>
+									<input class="col-10" type="date" name="birthDateIlunion" id="birthDateIlunion">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Email Address: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="mailAddressIlunion" id="mailAddressIlunion">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Phone Number: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="phoneNumberIlunion" id="phoneNumberIlunion">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Address: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="addressIlunion" id="addressIlunion">
+								</div>
+								<div class="nextButtonDiv">
+									<button type="button" class="roomSelButton" onclick="toRoomSelilunion()">Back</button>
+									<button type="button" class="personalInfoButton" onclick="personalInfoNextilunion()">Next</button><br>
+								</div>
+							</div>
+						</div>
+						<div class="reservationBodySection" id="payInfoilunion">
+							<h2>Enter Your Payment Information</h2>
+							<div class="personalInfoBody">
+								<div class="personalInfoInput">
+									<label><b>Credit Card Number: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="CCN" id="CCNIlunion">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Credit Card CVV: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="CCCCV" id="CCCCVIlunion">
+								</div>
+
+								<div class="personalInfoInput">
+									<label><b>Credit Card Valid Date: &nbsp; </b></label><br>
+									<input class="col-10" type="date" name="CCVD" id="CCVDIlunion">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Name on Card: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="NOC" id="NOCIlunion">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Billing Address: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="BA" id="BAIlunion">
+								</div>
+								<div class="nextButtonDiv">
+									<button type="button" class="roomSelButton" onclick="toPersInfoilunion()">Back</button>
+									<button type="button" class="paymentButton" onclick="paymentNextilunion()">Pay</button><br>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- FELLINA -->
+				<div class="establishmentReservation" id="fellinaReservation">
+					<div class="reservationHeader">
+						<div class="reservationPic"><img src="images/restaurante1.png" alt="" /></div>
+						<div class="reservationTitle">
+							<h1>Book for Fellina</h1>
+						</div>
+
+					</div>
+					<div class="progressbarContainer">
+						<ul class="progressbar">
+							<li id="firstStepPBfellina"><b>Select Your Room</b></li>
+							<li id="secondStepPBfellina"><b>Enter Your Personal Info</b></li>
+							<li id="thirdStepPBfellina"><b>Enter Your Payment information</b></li>
+						</ul>
+					</div>
+					<div class="reservationBody">
+						<div class="reservationBodySection" id="roomSelfellina">
+							<h2>Select Your Room</h2>
+							<div class="roomSelectionBody">
+								<div class="reservationArrivalDate">
+									<label><b>Arrival Date: &nbsp; </b></label><br>
+									<input class="col-10" type="date" name="date1" id="aDateFellina" required>
+								</div>
+								<div class="reservationCheckOutDate">
+									<label><b>Check Out Date: &nbsp; </b></label><br>
+									<input class="col-10" type="date" name="date1" id="cDateFellina" required>
+								</div>
+								<div class="extraInfo">
+									<label><b>Additional Information: &nbsp; </b></label><br>
+									<textarea rows="4" cols="30"></textarea>
+								</div>
+								<div class="adultsSelector">
+									<label><b>Adults: &nbsp; </b></label>
+									<select class="f1to30"></select>
+								</div>
+								<div class="childSelctor">
+									<label><b>Childs: &nbsp; </b></label>
+									<select class="f1to30"></select>
+								</div>
+								<div class="nextButtonDiv">
+									<button type="button" class="roomSelButton" onclick="displayFellina()">Cancel</button>
+									<button type="button" class="roomSelButton" onclick="roomSelNextfellina()">Next</button><br>
+								</div>
+							</div>
+						</div>
+						<div class="reservationBodySection" id="persInfofellina">
+							<h2>Enter Your Personal Information</h2>
+							<div class="personalInfoBody">
+								<div class="personalInfoInput">
+									<label><b>First Name: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="fNameFellina" id="fNameFellina">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Last Name: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="lNameFellina" id="lNameFellina">
+								</div>
+
+								<div class="personalInfoInput">
+									<label><b>Date of Birth: &nbsp; </b></label><br>
+									<input class="col-10" type="date" name="birthDateFellina" id="birthDateFellina">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Email Address: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="mailAddressFellina" id="mailAddressFellina">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Phone Number: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="phoneNumberFellina" id="phoneNumberFellina">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Address: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="addressFellina" id="addressFellina">
+								</div>
+								<div class="nextButtonDiv">
+									<button type="button" class="roomSelButton" onclick="toRoomSelfellina()">Back</button>
+									<button type="button" class="personalInfoButton" onclick="personalInfoNextfellina()">Next</button><br>
+								</div>
+							</div>
+						</div>
+						<div class="reservationBodySection" id="payInfofellina">
+							<h2>Enter Your Payment Information</h2>
+							<div class="personalInfoBody">
+								<div class="personalInfoInput">
+									<label><b>Credit Card Number: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="CCN" id="CCNFellina">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Credit Card CVV: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="CCCCV" id="CCCCVFellina">
+								</div>
+
+								<div class="personalInfoInput">
+									<label><b>Credit Card Valid Date: &nbsp; </b></label><br>
+									<input class="col-10" type="date" name="CCVD" id="CCVDFellina">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Name on Card: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="NOC" id="NOCFellina">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Billing Address: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="BA" id="BAFellina">
+								</div>
+								<div class="nextButtonDiv">
+									<button type="button" class="roomSelButton" onclick="toPersInfofellina()">Back</button>
+									<button type="button" class="paymentButton" onclick="paymentNextfellina()">Pay</button><br>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<!-- RETIRO PARK -->
+				<div class="establishmentReservation" id="retiroReservation">
+					<div class="reservationHeader">
+						<div class="reservationPic"><img src="images/parque1.png" alt="" /></div>
+						<div class="reservationTitle">
+							<h1>Book for Retiro Park</h1>
+						</div>
+
+					</div>
+					<div class="progressbarContainer">
+						<ul class="progressbar">
+							<li id="firstStepPBretiro"><b>Select Your Room</b></li>
+							<li id="secondStepPBretiro"><b>Enter Your Personal Info</b></li>
+							<li id="thirdStepPBretiro"><b>Enter Your Payment information</b></li>
+						</ul>
+					</div>
+					<div class="reservationBody">
+						<div class="reservationBodySection" id="roomSelretiro">
+							<h2>Select Your Room</h2>
+							<div class="roomSelectionBody">
+								<div class="reservationArrivalDate">
+									<label><b>Arrival Date: &nbsp; </b></label><br>
+									<input class="col-10" type="date" name="date1" id="aDateRetiro" required>
+								</div>
+								<div class="reservationCheckOutDate">
+									<label><b>Check Out Date: &nbsp; </b></label><br>
+									<input class="col-10" type="date" name="date1" id="cDateRetiro" required>
+								</div>
+								<div class="extraInfo">
+									<label><b>Additional Information: &nbsp; </b></label><br>
+									<textarea rows="4" cols="30"></textarea>
+								</div>
+								<div class="adultsSelector">
+									<label><b>Adults: &nbsp; </b></label>
+									<select class="f1to30"></select>
+								</div>
+								<div class="childSelctor">
+									<label><b>Childs: &nbsp; </b></label>
+									<select class="f1to30"></select>
+								</div>
+								<div class="nextButtonDiv">
+									<button type="button" class="roomSelButton" onclick="displayRetiro()">Cancel</button>
+									<button type="button" class="roomSelButton" onclick="roomSelNextretiro()">Next</button><br>
+								</div>
+							</div>
+						</div>
+						<div class="reservationBodySection" id="persInforetiro">
+							<h2>Enter Your Personal Information</h2>
+							<div class="personalInfoBody">
+								<div class="personalInfoInput">
+									<label><b>First Name: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="fNameRetiro" id="fNameRetiro">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Last Name: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="lNameRetiro" id="lNameRetiro">
+								</div>
+
+								<div class="personalInfoInput">
+									<label><b>Date of Birth: &nbsp; </b></label><br>
+									<input class="col-10" type="date" name="birthDateRetiro" id="birthDateRetiro">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Email Address: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="mailAddressRetiro" id="mailAddressRetiro">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Phone Number: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="phoneNumberRetiro" id="phoneNumberRetiro">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Address: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="addressRetiro" id="addressRetiro">
+								</div>
+								<div class="nextButtonDiv">
+									<button type="button" class="roomSelButton" onclick="toRoomSelretiro()">Back</button>
+									<button type="button" class="personalInfoButton" onclick="personalInfoNextretiro()">Next</button><br>
+								</div>
+							</div>
+						</div>
+						<div class="reservationBodySection" id="payInforetiro">
+							<h2>Enter Your Payment Information</h2>
+							<div class="personalInfoBody">
+								<div class="personalInfoInput">
+									<label><b>Credit Card Number: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="CCN" id="CCNRetiro">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Credit Card CVV: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="CCCCV" id="CCCCVRetiro">
+								</div>
+
+								<div class="personalInfoInput">
+									<label><b>Credit Card Valid Date: &nbsp; </b></label><br>
+									<input class="col-10" type="date" name="CCVD" id="CCVDRetiro">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Name on Card: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="NOC" id="NOCRetiro">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Billing Address: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="BA" id="BARetiro">
+								</div>
+								<div class="nextButtonDiv">
+									<button type="button" class="roomSelButton" onclick="toPersInforetiro()">Back</button>
+									<button type="button" class="paymentButton" onclick="paymentNextretiro()">Pay</button><br>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- HOTEL FRANCISCO I -->
+				<div class="establishmentReservation" id="franciscoReservation">
+					<div class="reservationHeader">
+						<div class="reservationPic"><img src="images/hotel2.png" alt="" /></div>
+						<div class="reservationTitle">
+							<h1>Book for Hotel Francisco I</h1>
+						</div>
+
+					</div>
+					<div class="progressbarContainer">
+						<ul class="progressbar">
+							<li id="firstStepPBfrancisco"><b>Select Your Room</b></li>
+							<li id="secondStepPBfrancisco"><b>Enter Your Personal Info</b></li>
+							<li id="thirdStepPBfrancisco"><b>Enter Your Payment information</b></li>
+						</ul>
+					</div>
+					<div class="reservationBody">
+						<div class="reservationBodySection" id="roomSelfrancisco">
+							<h2>Select Your Room</h2>
+							<div class="roomSelectionBody">
+								<div class="reservationArrivalDate">
+									<label><b>Arrival Date: &nbsp; </b></label><br>
+									<input class="col-10" type="date" name="date1" id="aDateFrancisco" required>
+								</div>
+								<div class="reservationCheckOutDate">
+									<label><b>Check Out Date: &nbsp; </b></label><br>
+									<input class="col-10" type="date" name="date1" id="cDateFrancisco" required>
+								</div>
+								<div class="extraInfo">
+									<label><b>Additional Information: &nbsp; </b></label><br>
+									<textarea rows="4" cols="30"></textarea>
+								</div>
+								<div class="adultsSelector">
+									<label><b>Adults: &nbsp; </b></label>
+									<select class="f1to30"></select>
+								</div>
+								<div class="childSelctor">
+									<label><b>Childs: &nbsp; </b></label>
+									<select class="f1to30"></select>
+								</div>
+								<div class="nextButtonDiv">
+									<button type="button" class="roomSelButton" onclick="displayFrancisco()">Cancel</button>
+									<button type="button" class="roomSelButton" onclick="roomSelNextfrancisco()">Next</button><br>
+								</div>
+							</div>
+						</div>
+						<div class="reservationBodySection" id="persInfofrancisco">
+							<h2>Enter Your Personal Information</h2>
+							<div class="personalInfoBody">
+								<div class="personalInfoInput">
+									<label><b>First Name: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="fNameFrancisco" id="fNameFrancisco">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Last Name: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="lNameFrancisco" id="lNameFrancisco">
+								</div>
+
+								<div class="personalInfoInput">
+									<label><b>Date of Birth: &nbsp; </b></label><br>
+									<input class="col-10" type="date" name="birthDateFrancisco" id="birthDateFrancisco">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Email Address: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="mailAddressFrancisco" id="mailAddressFrancisco">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Phone Number: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="phoneNumberFrancisco" id="phoneNumberFrancisco">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Address: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="addressFrancisco" id="addressFrancisco">
+								</div>
+								<div class="nextButtonDiv">
+									<button type="button" class="roomSelButton" onclick="toRoomSelfrancisco()">Back</button>
+									<button type="button" class="personalInfoButton" onclick="personalInfoNextfrancisco()">Next</button><br>
+								</div>
+							</div>
+						</div>
+						<div class="reservationBodySection" id="payInfofrancisco">
+							<h2>Enter Your Payment Information</h2>
+							<div class="personalInfoBody">
+								<div class="personalInfoInput">
+									<label><b>Credit Card Number: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="CCN" id="CCNFrancisco">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Credit Card CVV: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="CCCCV" id="CCCCVFrancisco">
+								</div>
+
+								<div class="personalInfoInput">
+									<label><b>Credit Card Valid Date: &nbsp; </b></label><br>
+									<input class="col-10" type="date" name="CCVD" id="CCVDFrancisco">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Name on Card: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="NOC" id="NOCFrancisco">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Billing Address: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="BA" id="BAFrancisco">
+								</div>
+								<div class="nextButtonDiv">
+									<button type="button" class="roomSelButton" onclick="toPersInfofrancisco()">Back</button>
+									<button type="button" class="paymentButton" onclick="paymentNextfrancisco()">Pay</button><br>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- COCINA ARCOIRIS -->
+				<div class="establishmentReservation" id="cocinaReservation">
+					<div class="reservationHeader">
+						<div class="reservationPic"><img src="images/restaurante2.png" alt="" /></div>
+						<div class="reservationTitle">
+							<h1>Book for Cocina Arcoiris</h1>
+						</div>
+
+					</div>
+					<div class="progressbarContainer">
+						<ul class="progressbar">
+							<li id="firstStepPBcocina"><b>Select Your Room</b></li>
+							<li id="secondStepPBcocina"><b>Enter Your Personal Info</b></li>
+							<li id="thirdStepPBcocina"><b>Enter Your Payment information</b></li>
+						</ul>
+					</div>
+					<div class="reservationBody">
+						<div class="reservationBodySection" id="roomSelcocina">
+							<h2>Select Your Room</h2>
+							<div class="roomSelectionBody">
+								<div class="reservationArrivalDate">
+									<label><b>Arrival Date: &nbsp; </b></label><br>
+									<input class="col-10" type="date" name="date1" id="aDateCocina" required>
+								</div>
+								<div class="reservationCheckOutDate">
+									<label><b>Check Out Date: &nbsp; </b></label><br>
+									<input class="col-10" type="date" name="date1" id="cDateCocina" required>
+								</div>
+								<div class="extraInfo">
+									<label><b>Additional Information: &nbsp; </b></label><br>
+									<textarea rows="4" cols="30"></textarea>
+								</div>
+								<div class="adultsSelector">
+									<label><b>Adults: &nbsp; </b></label>
+									<select class="f1to30"></select>
+								</div>
+								<div class="childSelctor">
+									<label><b>Childs: &nbsp; </b></label>
+									<select class="f1to30"></select>
+								</div>
+								<div class="nextButtonDiv">
+									<button type="button" class="roomSelButton" onclick="displayCocina()">Cancel</button>
+									<button type="button" class="roomSelButton" onclick="roomSelNextcocina()">Next</button><br>
+								</div>
+							</div>
+						</div>
+						<div class="reservationBodySection" id="persInfococina">
+							<h2>Enter Your Personal Information</h2>
+							<div class="personalInfoBody">
+								<div class="personalInfoInput">
+									<label><b>First Name: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="fNameCocina" id="fNameCocina">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Last Name: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="lNameCocina" id="lNameCocina">
+								</div>
+
+								<div class="personalInfoInput">
+									<label><b>Date of Birth: &nbsp; </b></label><br>
+									<input class="col-10" type="date" name="birthDateCocina" id="birthDateCocina">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Email Address: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="mailAddressCocina" id="mailAddressCocina">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Phone Number: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="phoneNumberCocina" id="phoneNumberCocina">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Address: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="addressCocina" id="addressCocina">
+								</div>
+								<div class="nextButtonDiv">
+									<button type="button" class="roomSelButton" onclick="toRoomSelcocina()">Back</button>
+									<button type="button" class="personalInfoButton" onclick="personalInfoNextcocina()">Next</button><br>
+								</div>
+							</div>
+						</div>
+						<div class="reservationBodySection" id="payInfococina">
+							<h2>Enter Your Payment Information</h2>
+							<div class="personalInfoBody">
+								<div class="personalInfoInput">
+									<label><b>Credit Card Number: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="CCN" id="CCNCocina">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Credit Card CVV: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="CCCCV" id="CCCCVCocina">
+								</div>
+
+								<div class="personalInfoInput">
+									<label><b>Credit Card Valid Date: &nbsp; </b></label><br>
+									<input class="col-10" type="date" name="CCVD" id="CCVDCocina">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Name on Card: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="NOC" id="NOCCocina">
+								</div>
+								<div class="personalInfoInput">
+									<label><b>Billing Address: &nbsp; </b></label><br>
+									<input class="col-10" type="text" name="BA" id="BACocina">
+								</div>
+								<div class="nextButtonDiv">
+									<button type="button" class="roomSelButton" onclick="toPersInfococina()">Back</button>
+									<button type="button" class="paymentButton" onclick="paymentNextcocina()">Pay</button><br>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="leaveModal">
+				<div class="modalContent">
+					<header>
+						<div class="modalHeader">
+							<h1> You are Leaving the Page </h1>
+						</div>
+					</header>
+					<div class="modalBody">
+						<p>Now you will be redirected to the payment process page.</p>
+						<p>This is an external page and it does not belong to LAZAN.</p>
+						<p>After the payment is completed, you will be returned to the LAZAN web page.</p>
+					</div>
+					<div class="modalButton">
+						<button type="button" class="modButton" onclick="modalNext()">Continue</button><br>
+					</div>
+					<div class="modalButton">
+						<button type="button" class="modButton" onclick="cancelModal()">Cancel</button><br>
+					</div>
+
+				</div>
+			</div>
+
+
+			<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ REVIEWS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+			<!-- ILUNION ATRIUM -->
+			<div class="review" id="review">
+				<!-- ILUNION ATRIUM -->
+				<div class="establishmentReview" id="ilunionReview">
+					<div class="reviewHeader">
+						<div class="reviewPic"><img src="images/hotel1.png" alt="" /></div>
+						<div class="reviewTitle">
+							<h2>Write a review for Ilunion Atrium</h2>
+						</div>
+						<div class="reviewStars">
+							<fieldset class="rating">
+								<input type="radio" id="ilunion_5" name="rating" /><label class="full" for="ilunion_5"></label>
+								<input type="radio" id="ilunion_4.5" name="rating" /><label class="half" for="ilunion_4.5"></label>
+								<input type="radio" id="ilunion_4" name="rating" /><label class="full" for="ilunion_4"></label>
+								<input type="radio" id="ilunion_3.5" name="rating" /><label class="half" for="ilunion_3.5"></label>
+								<input type="radio" id="ilunion_3" name="rating" /><label class="full" for="ilunion_3"></label>
+								<input type="radio" id="ilunion_2.5" name="rating" /><label class="half" for="ilunion_2.5"></label>
+								<input type="radio" id="ilunion_2" name="rating" /><label class="full" for="ilunion_2"></label>
+								<input type="radio" id="ilunion_1.5" name="rating" /><label class="half" for="ilunion_1.5"></label>
+								<input type="radio" id="ilunion_1" name="rating" /><label class="full" for="ilunion_1"></label>
+								<input type="radio" id="ilunion_0.5" name="rating" /><label class="half" for="ilunion_0.5"></label>
+							</fieldset>
+						</div>
+					</div>
+					<div class="reviewOptions">
+						<div class="reviewElement">
+							<label>Purpose of trip: </label>
+							<select>
+								<option name="Leisure">Leisure</option>
+								<option name="Business">Business</option>
+							</select>
+						</div>
+						<div class="reviewElement">
+							<label>Time of year: </label>
+							<select>
+								<option name="Spring">Spring</option>
+								<option name="Summer">Summer</option>
+								<option name="Autumn">Autumn</option>
+								<option name="Winter">Winter</option>
+							</select>
+						</div>
+					</div>
+					<div class="reviewText">
+						<textarea name="commentsBox" placeholder="Other comments..." id="reviewContentIlunion"></textarea>
+					</div>
+					<div class="reviewButtons">
+						<button class="backBrowsing" value="Back to browsing" onclick="displayIlunion()">Back</button>
+						<button class="cancelReview" value="Cancel" onclick="resetReview()">Cancel</button>
+						<button class="submitReview" value="Submit" onclick="submitReview()">Submit</button>
+
+					</div>
+				</div>
+
+				<!-- FELLINA -->
+				<div class="establishmentReview" id="fellinaReview">
+					<div class="reviewHeader">
+						<div class="reviewPic"><img src="images/restaurante1.png" alt="" /></div>
+						<div class="reviewTitle">
+							<h2>Write a review for Fellina</h2>
+						</div>
+						<div class="reviewStars">
+							<fieldset class="rating">
+								<input type="radio" id="fellina_5" name="rating" /><label class="full" for="fellina_5"></label>
+								<input type="radio" id="fellina_4.5" name="rating" /><label class="half" for="fellina_4.5"></label>
+								<input type="radio" id="fellina_4" name="rating" /><label class="full" for="fellina_4"></label>
+								<input type="radio" id="fellina_3.5" name="rating" /><label class="half" for="fellina_3.5"></label>
+								<input type="radio" id="fellina_3" name="rating" /><label class="full" for="fellina_3"></label>
+								<input type="radio" id="fellina_2.5" name="rating" /><label class="half" for="fellina_2.5"></label>
+								<input type="radio" id="fellina_2" name="rating" /><label class="full" for="fellina_2"></label>
+								<input type="radio" id="fellina_1.5" name="rating" /><label class="half" for="fellina_1.5"></label>
+								<input type="radio" id="fellina_1" name="rating" /><label class="full" for="fellina_1"></label>
+								<input type="radio" id="fellina_0.5" name="rating" /><label class="half" for="fellina_0.5"></label>
+							</fieldset>
+						</div>
+					</div>
+					<div class="reviewOptions">
+						<div class="reviewElement">
+							<label>Purpose of trip: </label>
+							<select>
+								<option name="Leisure">Leisure</option>
+								<option name="Business">Business</option>
+							</select>
+						</div>
+						<div class="reviewElement">
+							<label>Time of year: </label>
+							<select>
+								<option name="Spring">Spring</option>
+								<option name="Summer">Summer</option>
+								<option name="Autumn">Autumn</option>
+								<option name="Winter">Winter</option>
+							</select>
+						</div>
+					</div>
+					<div class="reviewText">
+						<textarea name="commentsBox" placeholder="Other comments..." id="reviewContentFellina"></textarea>
+					</div>
+					<div class="reviewButtons">
+						<button class="backBrowsing" value="Back to browsing" onclick="displayFellina()">Back</button>
+						<button class="cancelReview" value="Cancel" onclick="resetReview()">Cancel</button>
+						<button class="submitReview" value="Submit" onclick="submitReview()">Submit</button>
+
+					</div>
+				</div>
+
+				<!-- RETIRO PARK -->
+				<div class="establishmentReview" id="retiroReview">
+					<div class="reviewHeader">
+						<div class="reviewPic"><img src="images/parque1.png" alt="" /></div>
+						<div class="reviewTitle">
+							<h2>Write a review for Retiro Park</h2>
+						</div>
+						<div class="reviewStars">
+							<fieldset class="rating">
+								<input type="radio" id="retiro_5" name="rating" /><label class="full" for="retiro_5"></label>
+								<input type="radio" id="retiro_4.5" name="rating" /><label class="half" for="retiro_4.5"></label>
+								<input type="radio" id="retiro_4" name="rating" /><label class="full" for="retiro_4"></label>
+								<input type="radio" id="retiro_3.5" name="rating" /><label class="half" for="retiro_3.5"></label>
+								<input type="radio" id="retiro_3" name="rating" /><label class="full" for="retiro_3"></label>
+								<input type="radio" id="retiro_2.5" name="rating" /><label class="half" for="retiro_2.5"></label>
+								<input type="radio" id="retiro_2" name="rating" /><label class="full" for="retiro_2"></label>
+								<input type="radio" id="retiro_1.5" name="rating" /><label class="half" for="retiro_1.5"></label>
+								<input type="radio" id="retiro_1" name="rating" /><label class="full" for="retiro_1"></label>
+								<input type="radio" id="retiro_0.5" name="rating" /><label class="half" for="retiro_0.5"></label>
+							</fieldset>
+						</div>
+					</div>
+					<div class="reviewOptions">
+						<div class="reviewElement">
+							<label>Purpose of trip: </label>
+							<select>
+								<option name="Leisure">Leisure</option>
+								<option name="Business">Business</option>
+							</select>
+						</div>
+						<div class="reviewElement">
+							<label>Time of year: </label>
+							<select>
+								<option name="Spring">Spring</option>
+								<option name="Summer">Summer</option>
+								<option name="Autumn">Autumn</option>
+								<option name="Winter">Winter</option>
+							</select>
+						</div>
+					</div>
+					<div class="reviewText">
+						<textarea name="commentsBox" placeholder="Other comments..." id="reviewContentRetiro"></textarea>
+					</div>
+					<div class="reviewButtons">
+						<button class="backBrowsing" value="Back to browsing" onclick="displayRetiro()">Back</button>
+						<button class="cancelReview" value="Cancel" onclick="resetReview()">Cancel</button>
+						<button class="submitReview" value="Submit" onclick="submitReview()">Submit</button>
+
+					</div>
+				</div>
+
+				<!-- HOTEL FRANCISCO I -->
+				<div class="establishmentReview" id="franciscoReview">
+					<div class="reviewHeader">
+						<div class="reviewPic"><img src="images/hotel2.png" alt="" /></div>
+						<div class="reviewTitle">
+							<h2>Write a review for Hotel Francisco I</h2>
+						</div>
+						<div class="reviewStars">
+							<fieldset class="rating">
+								<input type="radio" id="francisco_5" name="rating" /><label class="full" for="francisco_5"></label>
+								<input type="radio" id="francisco_4.5" name="rating" /><label class="half" for="francisco_4.5"></label>
+								<input type="radio" id="francisco_4" name="rating" /><label class="full" for="francisco_4"></label>
+								<input type="radio" id="francisco_3.5" name="rating" /><label class="half" for="francisco_3.5"></label>
+								<input type="radio" id="francisco_3" name="rating" /><label class="full" for="francisco_3"></label>
+								<input type="radio" id="francisco_2.5" name="rating" /><label class="half" for="francisco_2.5"></label>
+								<input type="radio" id="francisco_2" name="rating" /><label class="full" for="francisco_2"></label>
+								<input type="radio" id="francisco_1.5" name="rating" /><label class="half" for="francisco_1.5"></label>
+								<input type="radio" id="francisco_1" name="rating" /><label class="full" for="francisco_1"></label>
+								<input type="radio" id="francisco_0.5" name="rating" /><label class="half" for="francisco_0.5"></label>
+							</fieldset>
+						</div>
+					</div>
+					<div class="reviewOptions">
+						<div class="reviewElement">
+							<label>Purpose of trip: </label>
+							<select>
+								<option name="Leisure">Leisure</option>
+								<option name="Business">Business</option>
+							</select>
+						</div>
+						<div class="reviewElement">
+							<label>Time of year: </label>
+							<select>
+								<option name="Spring">Spring</option>
+								<option name="Summer">Summer</option>
+								<option name="Autumn">Autumn</option>
+								<option name="Winter">Winter</option>
+							</select>
+						</div>
+					</div>
+					<div class="reviewText">
+						<textarea name="commentsBox" placeholder="Other comments..." id="reviewContentFrancisco"></textarea>
+					</div>
+					<div class="reviewButtons">
+						<button class="backBrowsing" value="Back to browsing" onclick="displayFrancisco()">Back</button>
+						<button class="cancelReview" value="Cancel" onclick="resetReview()">Cancel</button>
+						<button class="submitReview" value="Submit" onclick="submitReview()">Submit</button>
+
+					</div>
+				</div>
+
+				<!-- COCINA ARCOIRIS -->
+				<div class="establishmentReview" id="cocinaReview">
+					<div class="reviewHeader">
+						<div class="reviewPic"><img src="images/restaurante2.png" alt="" /></div>
+						<div class="reviewTitle">
+							<h2>Write a review for Cocina Arcoiris</h2>
+						</div>
+						<div class="reviewStars">
+							<fieldset class="rating">
+								<input type="radio" id="cocina_5" name="rating" /><label class="full" for="cocina_5"></label>
+								<input type="radio" id="cocina_4.5" name="rating" /><label class="half" for="cocina_4.5"></label>
+								<input type="radio" id="cocina_4" name="rating" /><label class="full" for="cocina_4"></label>
+								<input type="radio" id="cocina_3.5" name="rating" /><label class="half" for="cocina_3.5"></label>
+								<input type="radio" id="cocina_3" name="rating" /><label class="full" for="cocina_3"></label>
+								<input type="radio" id="cocina_2.5" name="rating" /><label class="half" for="cocina_2.5"></label>
+								<input type="radio" id="cocina_2" name="rating" /><label class="full" for="cocina_2"></label>
+								<input type="radio" id="cocina_1.5" name="rating" /><label class="half" for="cocina_1.5"></label>
+								<input type="radio" id="cocina_1" name="rating" /><label class="full" for="cocina_1"></label>
+								<input type="radio" id="cocina_0.5" name="rating" /><label class="half" for="cocina_0.5"></label>
+							</fieldset>
+						</div>
+					</div>
+					<div class="reviewOptions">
+						<div class="reviewElement">
+							<label>Purpose of trip: </label>
+							<select>
+								<option name="Leisure">Leisure</option>
+								<option name="Business">Business</option>
+							</select>
+						</div>
+						<div class="reviewElement">
+							<label>Time of year: </label>
+							<select>
+								<option name="Spring">Spring</option>
+								<option name="Summer">Summer</option>
+								<option name="Autumn">Autumn</option>
+								<option name="Winter">Winter</option>
+							</select>
+						</div>
+					</div>
+					<div class="reviewText">
+						<textarea name="commentsBox" placeholder="Other comments..." id="reviewContentCocina"></textarea>
+					</div>
+					<div class="reviewButtons">
+						<button class="backBrowsing" value="Back to browsing" onclick="displayCocina()">Back</button>
+						<button class="cancelReview" value="Cancel" onclick="resetReview()">Cancel</button>
+						<button class="submitReview" value="Submit" onclick="submitReview()">Submit</button>
+
+					</div>
+				</div>
+			</div>
+
+			<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ REGISTRATION FORM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+			<div id="regForm">
+				<form name="rForm" class="format" onsubmit="return validateForm()">
+					<div>
+						<h2>Sign Up</h2>
+						<p>Please fill in this form to create an account.</p>
+						<hr id="su"> <br>
+						<label class="col-2"><b>Username: &nbsp; </b></label>
+						<input class="col-10" type="text" placeholder="Enter username" name="username" required><br>
+						<label class="col-2"><b>Password: &nbsp; </b></label>
+						<!--	<div id="pass"><p> (Maximum 8 characters, where the allowed characters<br>
+														are letters [a-z] and digits [0-9]) </p></div>-->
+						<input class="col-10" type="password" placeholder="Enter password" name="psw" pattern="[0-9a-z]*" required><br>
+						<label class="col-2"><b>Name: &nbsp; </b></label>
+						<input class="col-10" type="text" placeholder="Enter name" name="name" required><br>
+						<label class="col-2"><b>Surname: &nbsp; </b></label>
+						<input class="col-10" type="text" placeholder="Enter surname" name="surname" required><br>
+						<label class="col-2"><b>Email: &nbsp; </b></label>
+						<input class="col-10" type="email" placeholder="Enter email" name="mail" required><br>
+						<label class="col-2"><b>Date of birth: &nbsp; </b></label>
+						<input class="col-10" type="date" name="dob" required><br>
+						<label class="col-2">Profile picture: </label>
+						<input class="col-10" type="file" name="prof_pic"><br>
+						<label class="col-2"><b>Phone number</b></label>
+						<input class="col-10" type="tel" placeholder="Enter phone number" name="phoneNumber" required>
+						<label class="col-2"><b>Address: &nbsp; </b></label>
+						<input class="col-10" type="text" placeholder="Enter address" name="address" required><br>
+						<label class="col-10"> <input id="chk" type="checkbox" checked="checked" name="remember" required> I have read
+							and accept the <a href="#">Terms of Use </a></label>
+						<div class="clearfix">
+							<button type="button" onclick="this.form.reset()" class="cancelButton">Delete</button>
+							<button type="submit" value="Submit" class="signupButton">Save</button>
+						</div>
+					</div>
+				</form>
+			</div> <!-- closes id="regForm" -->
+
+			<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LOGIN FORM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+			<div id="loginForm">
+				<form name="lForm" class="format" onsubmit="return validateLogin()">
+					<div>
+						<h2>Log In</h2>
+						<p>Please fill in with your account details</p>
+						<hr id="su"> <br>
+						<label class="col-2"><b>Email</b></label>
+						<input class="col-10" type="text" placeholder="Enter email" name="email" required><br>
+						<label class="col-2"><b>Password</b></label>
+						<input class="col-10" type="password" placeholder="Enter password" name="psw" required>
+						<div class="clearfix">
+							<button type="submit" value="Submit" class="loginButton"><b>Log in</b></button>
+						</div>
+					</div>
+				</form>
+			</div><!-- closes id="loginForm" -->
+
+			<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ INSPIRATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+			<div id="popular">
+				<h1> Get inspiration for your next trip:</h1><br><br><br><br>
+				<div class="imgcontainer" style="clear:left">
+					<img src="images/search/suggestions/amsterdam.png" alt="amsterdam" class="search_pic">
+					<div class="bottom-center">Amsterdam</div>
+				</div>
+				<div class="imgcontainer">
+					<img src="images/search/suggestions/hotel1.png" alt="hotel1" class="search_pic">
+					<div class="bottom-center">Munich</div>
+				</div>
+				<div class="imgcontainer">
+					<div class="search_div"><img src="images/search/suggestions/argentina.png" alt="argentina" class="search_pic"></div>
+					<div class="bottom-center">Mar de Plata</div>
+				</div>
+				<div class="imgcontainer">
+					<div class="search_div"><img src="images/search/suggestions/canada.png" alt="canada" class="search_pic"></div>
+					<div class="bottom-center">Toronto</div>
+				</div>
+				<div class="imgcontainer" style="clear:left">
+					<div class="search_div"> <img src="images/search/suggestions/filipinas.png" alt="philippines" class="search_pic"></div>
+					<div class="bottom-center">Manila</div>
+				</div>
+				<div class="imgcontainer">
+					<div class="search_div"><img src="images/search/suggestions/japan.png" alt="japan" class="search_pic"></div>
+					<div class="bottom-center">Tokio</div>
+				</div>
+				<div class="imgcontainer">
+					<div class="search_div"><img src="images/search/suggestions/london.png" alt="london" class="search_pic"></div>
+					<div class="bottom-center">London</div>
+				</div>
+				<div class="imgcontainer">
+					<div class="search_div"><img src="images/search/suggestions/hotel2.png" alt="hotel2" class="search_pic"></div>
+					<div class="bottom-center">Athens</div>
+				</div>
+				<div id="more">
+					<div class="imgcontainer" style="clear:left">
+						<div class="search_div"> <img src="images/search/suggestions/hotel3.png" alt="hotel3" class="search_pic"></div>
+						<div class="bottom-center">Iceland</div>
+					</div>
+					<div class="imgcontainer">
+						<div class="search_div"><img src="images/search/suggestions/turkey.png" alt="turkey" class="search_pic"></div>
+						<div class="bottom-center">Ankara</div>
+					</div>
+					<div class="imgcontainer">
+						<div class="search_div"><img src="images/search/suggestions/venecia.png" alt="venecia" class="search_pic"></div>
+						<div class="bottom-center">Venice</div>
+					</div>
+					<div class="imgcontainer">
+						<div class="search_div"><img src="images/search/suggestions/viena.png" alt="viena" class="search_pic"></div>
+						<div class="bottom-center">Vienna</div>
+					</div>
+					<div class="imgcontainer" style="clear:left">
+						<div class="search_div"> <img src="images/search/suggestions/china.png" alt="china" class="search_pic"></div>
+						<div class="bottom-center">Beijing</div>
+					</div>
+					<div class="imgcontainer">
+						<div class="search_div"><img src="images/search/suggestions/newyork.png" alt="newyork" class="search_pic"></div>
+						<div class="bottom-center">New York</div>
+					</div>
+					<div class="imgcontainer">
+						<div class="search_div"><img src="images/search/suggestions/hotel4.png" alt="hotel4" class="search_pic"></div>
+						<div class="bottom-center">Mexico</div>
+					</div>
+					<div class="imgcontainer">
+						<div class="search_div"><img src="images/search/suggestions/yibuti.png" alt="yibuti" class="search_pic"></div>
+						<div class="bottom-center">Djiobuti</div>
+					</div>
+				</div> <!-- id="more"> -->
+
+				<div id="reload"> <a onclick="loadmore()"> load more<br><br><img src="images/reload.png" alt="Reload" width="40"
+						 height="40"></a></div>
+			</div><!-- closes id="popular" -->
+
+			<div id="profileContainer">
+				<div id="leftProfile">
+					<h2> &nbsp; <img src="images/woman.png" alt="woman icon" width="40" height="40"> &nbsp; <div id="infoUsername">
+							@karensmith </div>
+					</h2>
+
+					<div>
+						<div class="row-edit" style="width:100%;">
+							<div style="width:70%;float:left"><h3> <a href="#" onclick="personalInfo()"> Personal Information: </a></h3></div>
+							<div style="width:25%;"><button class="regButton" onclick="personalInfo()">Edit </button> </div>
+						</div>
+						<p id="nameSec"> Karen Smith </p>
+						<p id="addressSec">Madrid, Spain</p>
+						<p>Member since 2004 </p>
+
+						<hr class="negr"> <!-- Division line -->
+						<div class="row-edit" style="width:100%;">
+							<div style="width:70%;float:left"><h3> <a href="#" onclick="lastReviews()"> Last Reviews: </a></h3></div>
+							<div style="width:25%;"><button class="regButton" onclick="lastReviews()"> View all </button> </div>
+						</div>
+						<div class="leftBarContent">
+							<ul>
+								<li>&#10003; Retiro Park</li>
+								<p class="listExplanation">The biggest, and most iconic park of Madrid. If you visited Madrid, and did not visit the Retiro. Did you really visit Madrid?</p>
+								<li>&#10003; Cocina Arcoiris</li>
+								<p class="listExplanation">If you want to eat the traditional "menu del dia", you have to try this place.</p>
+							</ul>
+						</div>
+
+						<hr class="negr"> <!-- Division line -->
+						<div class="row-edit" style="width:100%;">
+							<div style="width:70%;float:left"><h3> <a href="#" onclick="savedPlaces()"> Saved Places: </a></h3></div>
+							<div style="width:25%;"><button class="regButton" onclick="savedPlaces()"> View all </button> </div>
+						</div>
+						<div class="leftBarContent">
+							<ul>
+								<li>&#10003; Hotel Francisco I</li>
+								<p class="listExplanation">If you go to madrid only for a day or two, this is the best choice. Good prices, and its location near the airport facilitates everything</p>
+								<li>&#10003; Ilunion Atrium</li>
+								<p class="listExplanation">Although it is only 2 stars, it is a great hotel located inside Madrid.</p>
+							</ul>
+						</div>
+
+						<hr class="negr"> <!-- Division line -->
+
+						<h3> My Preferences: <button onclick="addPreference()"> + </button> </h3>
+						<br>
+						<div id="preference">
+							<span class="pref"> Weekend &nbsp;&nbsp;<button onclick="deletePreference(this)">x</button> </span>
+							<span class="pref"> Foodie &nbsp;&nbsp; <button onclick="deletePreference(this)">x</button> </span>
+							<span class="pref"> Friends &nbsp;&nbsp;<button onclick="deletePreference(this)">x</button> </span>
+						</div>
+					</div>
+				</div>
+				<div id="rightProfile">
+					<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ARTICLE - Last Opinions part ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+					<div id="lastReviews">
+						<h2 class="desktop_section" id="lastReviewTitle"> Last Reviews: </h2><br>
+						<div class="lastReviewContainer">
+							<img src="images/gallery/parque1.png" alt="retiro" class="lastReviewPict">
+							<div class="lastReviewDetailsR">
+								<h2>Retiro Park</h2>
+								<p>Overall score: <img src="images/search/stars/entera.png" alt="star" class="services">
+									<img src="images/search/stars/entera.png" alt="star" class="services">
+									<img src="images/search/stars/entera.png" alt="star" class="services">
+									<img src="images/search/stars/entera.png" alt="star" class="services">
+									<img src="images/search/stars/vacia.png" alt="star" class="services"></p>
+								<p>Location: Calle de Alfonso XII, Madrid</p>
+							</div>
+							<div class="lastReviewOpinion">
+								<h3 id="lastReviewsOpiTitRet">Opinion by</h3>
+								<p>I have been studying in Madrid for a semester now. Retiro Park is my absolute favorite place in Madrid.
+									It’s just a quick walk from my apartment and every time I go there I see something new.
+									The park is massive and people are always out doing some kind of activities. You could spend hours exploring
+									the park. Highly recommend.</p>
+							</div>
+						</div>
+						<div class="lastReviewContainer">
+							<img src="images/gallery/restaurante2.png" alt="retiro" class="lastReviewPict">
+							<div class="lastReviewDetails">
+								<h2>Cocina Arcoiris</h2>
+								<p>Overall score: <img src="images/search/stars/entera.png" alt="star" class="services">
+									<img src="images/search/stars/entera.png" alt="star" class="services">
+									<img src="images/search/stars/entera.png" alt="star" class="services">
+									<img src="images/search/stars/vacia.png" alt="star" class="services">
+									<img src="images/search/stars/vacia.png" alt="star" class="services"></p>
+								<p>Location: Plaza de Olavide, 2, 28010 Madrid</p>
+							</div>
+							<div class="lastReviewOpinion">
+								<h3 id="lastReviewsOpiTitCoc">Opinion by @johnadams</h3>
+								<p>The Cocina Arcoiris is a neighborhood cateteria/bar/restaurant offering a menu del dia with far more
+									choices
+									than any other restaurant of this sort that we've ever eaten in. (All menus del dia include a choice of first
+									and
+									second courses, dessert or coffee, bread and wine, beer or soda.) Most restaurants offer three or four choices
+									of
+									first and second courses; here the number is double that. You also can choose two first courses instead of one
+									each,
+									if you prefer.</p>
+							</div>
+						</div>
+						<div class="lastReviewContainer" id="lastReviewContainerExtra">
+							<img src="images/gallery/restaurante2.png" alt="retiro" class="lastReviewPict" id="reviewImagenExtra">
+							<div class="lastReviewDetails">
+								<h2 id="reviewNameExtra">Cocina Arcoiris</h2>
+								<p>Overall score: <img src="images/search/stars/entera.png" alt="star" class="services">
+									<img src="images/search/stars/entera.png" alt="star" class="services">
+									<img src="images/search/stars/entera.png" alt="star" class="services">
+									<img src="images/search/stars/vacia.png" alt="star" class="services">
+									<img src="images/search/stars/vacia.png" alt="star" class="services"></p>
+								<p id="reviewLocationExtra"></p>
+							</div>
+							<div class="lastReviewOpinion">
+								<h3 id="lastReviewsOpiTitExtra"></h3>
+								<p id="lastReviewContentExtra"></p>
+							</div>
+						</div>
+					</div>
+
+					<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ARTICLE - Saved Places ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+					<div id="savedPlaces">
+						<h2 class="desktop_section" id="lastReviewTitle"> Saved Places: </h2><br>
+						<div class="lastReviewContainer">
+							<img src="images/gallery/hotel2.png" alt="farnciscoI" class="lastReviewPict">
+							<div class="lastReviewDetails">
+								<h2>Hotel Francisco I</h2>
+								<p>Overall score: <img src="images/search/stars/entera.png" alt="star" class="services">
+									<img src="images/search/stars/entera.png" alt="star" class="services">
+									<img src="images/search/stars/entera.png" alt="star" class="services">
+									<img src="images/search/stars/entera.png" alt="star" class="services">
+									<img src="images/search/stars/vacia.png" alt="star" class="services"></p>
+								<p>Location: Calle del Arenal, 15, 28013 Madrid</p>
+							</div>
+							<div class="savedPlacesOptions">
+								<button type="button" class="reservationButton" onclick="reservationFrancisco()">Make a reservation</button><br>
+							</div>
+							<div class="savedPlacesOpinionsContainer">
+								<div class="savedPlacesOpinion">
+									<h3>Opinion by @josegonzalez</h3>
+									<p>Conveniently located for those flying in and/or out from the airport - there's a direct bus to the airport,
+										which is a few stops away. The room was very spacious and very comfortable, I really enjoyed it. Nice decor,
+										oo. What I disliked was some sort of mechanic rumour I could hear, which sounded like elevator door
+						(although my room wasn't close to an elevator).</p>
+								</div>
+								<div class="savedPlacesOpinion">
+									<h3>Opinion by @faridwanis</h3>
+									<p>Luckily to us this hotel had much more to offer than many 4 stars hotels I have seen. It is a beautiful
+										small property extremely well maintained with beautiful cute details such as flavored water at entrance and a
+										beautiful smoking areas in front of the hotel ( unfortunately we could not benefit from much, since the
+										municipality
+										was doing some construction work in the area) beds and pillows are super comfy with memory foam toppers on top
+										of mattresses,
+										some bathrooms with 2 sinks which is great if you are sharing the room .</p>
+								</div>
+							</div>
+
+						</div>
+						<div class="lastReviewContainer">
+							<img src="images/gallery/hotel1.png" alt="retiro" class="lastReviewPict">
+							<div class="lastReviewDetails">
+								<h2>Ilunion Atrium</h2>
+								<p>Overall score: <img src="images/search/stars/entera.png" alt="star" class="services">
+									<img src="images/search/stars/entera.png" alt="star" class="services">
+									<img src="images/search/stars/entera.png" alt="star" class="services">
+									<img src="images/search/stars/vacia.png" alt="star" class="services">
+									<img src="images/search/stars/vacia.png" alt="star" class="services"></p>
+								<p>Location: Calle de Emilio Vargas, 3-5, Madrid, Spain</p>
+							</div>
+							<div class="savedPlacesOptions">
+								<button type="button" class="reservationButton" onclick="reservationIlunion()">Make a reservation</button><br>
+							</div>
+							<div class="savedPlacesOpinionsContainer">
+								<div class="savedPlacesOpinion">
+									<h3>Opinion by @juliaevans</h3>
+									<p>This hotel is inside the city but relatively close to the airport, a 10 min ride.
+										There is a short commute to the center of the city. The hotel has many facilities
+										available for the clients, such as a swimming pool, a gym, a relaxing area, a
+										restaurant, as well as free wifi connection.</p>
+								</div>
+								<div class="savedPlacesOpinion">
+									<h3>Opinion by @jaunperez</h3>
+									<p>Hotel is really nice (I don't get why it's considered two stars). Location is great, you can walk
+										to major attractions and have an easy access to subway. Rooms are clean and organized. Reception
+										is polite. Downsides are the room design (bathroom has a slide door which is never really closed)
+										and breakfast that is quite expensive in my opinion.</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+					<div id="personalinfo">
+						<h2 class="desktop_section"> Personal Information </h2>
+						<div class="row">
+							<div class="col-6 col-s-6"> Name: <br> <br> <input type="text" placeholder="name" id="infoName"></div>
+							<div class="col-6 col-s-6"> Surname: <br> <br> <input type="text" placeholder="surname" id="infoSurname"></div>
+						</div>
+						<div class="row">
+							<div class="col-12 col-s-12"> Email: <br> <br> <input type="text" placeholder="email" id="infoEmail"></div>
+						</div>
+						<div class="row">
+							<div class="col-12 col-s-12"> Address: <br> <br> <input type="text" placeholder="address" id="infoAddress"></div>
+						</div>
+						<div class="row">
+							<div class="col-6 col-s-6"> Mobile phone: <br> <br> <input type="text" placeholder="phone number" id="infoPhone"></div>
+							<div class="col-6 col-s-6"> Birthday: <br> <br> <input type="date" id="infoBirthdate"></div>
+						</div>
+						<button type="button" class="changeButton" onclick="updateForm()">Save</button>
+					</div>
+
+				</div>
+			</div>
+
+
+			<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ARTICLE - Personal information ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+			<!--close to id="personalinfo"-->
+	</div>
+	</div> <!-- Close profile content -->
+	</article>
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ WHO TO FOLLOW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<section id="suggestions">
+		<div id="sugTitle">
+			<h1> Who to follow: </h1><br><br> <br>
+		</div>
+		<div class="row-edit2">
+			<div class="follow" style="clear:left">
+				<div class="imageUser"><img src="images/person1.png" alt="@backpacker" class="users"></div>
+				<div class="nameUser">
+					<h3> @backpacker </h3>
+					<p class="number">2,913,130 followers </p>
+				</div>
+				<div class="under_pic">
+					<p>Hi, I'm Jack. I like to travel with the only company of my backpack, where I carry everything I need to live
+						more experiences.</p>
+				</div>
+			</div>
+			<div class="follow">
+				<div class="imageUser"><img src="images/person2_1.png" alt="@KandJ" class="users"></div>
+				<div class="nameUser">
+					<h3> @KarandJon </h3>
+					<p class="number">1,835,954 followers </p>
+				</div>
+				<div class="under_pic">
+					<p>Welcome to our profile, we are Karen and Johnny. We enjoy nature very much and review the experiences we try!</p>
+				</div>
+			</div>
+			<div class="follow">
+				<div class="imageUser"><img src="images/person3_1.png" alt="LAZAN logo" class="users"></div>
+				<div class="nameUser">
+					<h3> @heyitsjulia </h3>
+					<p class="number">1,312,912 followers </p>
+				</div>
+				<div class="under_pic">
+					<p>Hey there, it's Julia! I love travelling with my friends and going to all kinds of places. In my profile, I
+						update the places I visit. </p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SPECIFIC SEARCH london - hoteles ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+	<div id="search_hotels">
+		<div class="small_search">
+			<form name="smallSearchForm">
+				<div class="search-container">
+					<input type="text" placeholder="Search new destination..." name="search" id="searchSmallInputHotels" autocomplete="off">
+					<button type="submit" style="float:left"><i class="fa fa-search"></i></button>
+				</div>
+				<div class="searchParameters2">
+					<label><b>Check-in date: &nbsp; </b></label>
+					<input class="col-10" type="date" name="date1" required><br>
+				</div>
+				<div class="searchParameters2">
+					<label><b>Check-out date: &nbsp; </b></label>
+					<input class="col-10" type="date" name="date2" required><br>
+				</div>
+				<div class="searchParameters2">
+					<label><b>Keywords: &nbsp; </b></label>
+					<input class="col-10" type="text" name="keyword" required><br>
+				</div>
+				<div class="searchParameters2" style="height:85.433px">
+					<label><b>Price range: &nbsp; </b></label>
+					<input type="range" name="price" id="priceInput" min="0" max="300" step="5" value="100" oninput="priceOutput.value = priceInput.value">
+					<output name="priceOutput" id="priceOutput">100</output>
+				</div>
+				<div class="bigSearchParameters2">
+					<div class="smallSearchParameters2">
+						<label style="width:100%"><b>Adults: &nbsp; </b></label>
+						<select class="f1to30"></select>
+					</div>
+					<div class="smallSearchParameters2">
+						<label style="width:100%"><b>Children: &nbsp; </b></label>
+						<select class="f0to30"></select>
+					</div>
+					<div class="smallSearchParameters2">
+						<label style="width:100%"><b>Rooms: &nbsp; </b></label>
+						<select class="f1to15"></select>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!--closes class="small_search"-->
+
+		<div id="all_hotels_london" class="row-edit">
+
+			<div class="result">
+				<div class="result_picture"><img src="images/search/london/london1.png" alt="london" class="result_pic"></div>
+				<div class="result_text">
+					<p class="result_name"> Park Grand London Kensington </p>
+					<p> Overall score: 8/10 <br> Location: 27, Devonshire Terrace <br> Average price per night: $72</p>
+				</div>
+				<div class="result_logos">
+					<img src="images/search/logos/web.png" alt="web" class="services"> Visit their <a href="https://www.parkgrandkensington.co.uk/">website
+					</a> <br>
+					<img src="images/search/logos/free_wifi.png" alt="free_wifi" class="services"> Free wifi <br>
+					<img src="images/search/logos/bar.png" alt="bar" class="services"> Bar / Lounge <br>
+					<img src="images/search/logos/restaurant.png" alt="restaurant" class="services"> Restaurant <br>
+					<img src="images/search/logos/room_service.png" alt="room_service" class="services">Room service <br>
+				</div>
+			</div>
+			<!--closes class="result"-->
+
+			<div class="result">
+				<div class="result_picture"><img src="images/search/london/london2.png" alt="london" class="result_pic"></div>
+				<div class="result_text">
+					<p class="result_name"> The Grosvenor Hotel </p>
+					<p> Overall score: 8/10 <br> Location: 212 Baker Street <br> Average price per night: $72</p>
+				</div>
+				<div class="result_logos">
+					<img src="images/search/logos/web.png" alt="web" class="services"> Visit their <a href="https://www.guoman.com/">website
+					</a> <br>
+					<img src="images/search/logos/free_wifi.png" alt="free_wifi" class="services"> Free wifi <br>
+					<img src="images/search/logos/accessible.png" alt="accessible" class="services"> Accessible <br>
+					<img src="images/search/logos/bar.png" alt="bar" class="services"> Bar / Lounge <br>
+					<img src="images/search/logos/restaurant.png" alt="restaurant" class="services"> Restaurant <br>
+				</div>
+			</div>
+			<!--closes class="result"-->
+
+			<div class="result">
+				<div class="result_picture"><img src="images/search/london/london3.png" alt="london" class="result_pic"></div>
+				<div class="result_text">
+					<p class="result_name"> The tower </p>
+					<p> Overall score: 8/10 <br> Location: 43 St Katharine's Way <br> Average price per night: $72</p>
+				</div>
+				<div class="result_logos">
+					<img src="images/search/logos/web.png" alt="web" class="services"> Visit their <a href="https://www.guoman.com/en/london/the-tower.html?utm_source=tripadvisor&utm_medium=paid_listing&utm_campaign=website_link&utm_content=bau">website
+					</a> <br>
+					<img src="images/search/logos/free_wifi.png" alt="free_wifi" class="services"> Free wifi <br>
+					<img src="images/search/logos/accessible.png" alt="accessible" class="services"> Accessible <br>
+					<img src="images/search/logos/bar.png" alt="bar" class="services"> Bar / Lounge <br>
+					<img src="images/search/logos/free_breakfast.png" alt="free_breakfast" class="services"> Free breakfast <br>
+				</div>
+			</div>
+			<!--closes class="result"-->
+
+			<div class="result">
+				<div class="result_picture"><img src="images/search/london/london4.png" alt="london" class="result_pic"></div>
+				<div class="result_text">
+					<p class="result_name"> The Nadler Soho </p>
+					<p> Overall score: 8/10 <br> Location: 10 Carlisle Street <br> Average price per night: $72</p>
+				</div>
+				<div class="result_logos">
+					<img src="images/search/logos/web.png" alt="web" class="services"> Visit their <a href="https://nad.dbm.guestline.net/availability?hotel=NADSOH">website
+					</a> <br>
+					<img src="images/search/logos/free_wifi.png" alt="free_wifi" class="services"> Free wifi <br>
+					<img src="images/search/logos/pets.png" alt="pets" class="services"> Pets allowed <br>
+					<img src="images/search/logos/restaurant.png" alt="restaurant" class="services"> Restaurant <br>
+					<img src="images/search/logos/room_service.png" alt="room_service" class="services">Room service <br>
+				</div>
+			</div>
+			<!--closes class="result"-->
+
+			<div class="result">
+				<div class="result_picture"><img src="images/search/london/london5.png" alt="london" class="result_pic"></div>
+				<div class="result_text">
+					<p class="result_name"> Park Grand Paddington Court </p>
+					<p> Overall score: 8/10 <br> Location: 27 Devonshire Terrace <br> Average price per night: $72</p>
+				</div>
+				<div class="result_logos">
+					<img src="images/search/logos/web.png" alt="web" class="services"> Visit their <a href="https://secure.parkgrandpaddingtoncourt.co.uk/reservation/roomdetails/showprice/172/16-12-2018/17-12-2018/1/2-0/dir">website
+					</a> <br>
+					<img src="images/search/logos/free_wifi.png" alt="free_wifi" class="services"> Free wifi <br>
+					<img src="images/search/logos/accessible.png" alt="accessible" class="services"> Accessible <br>
+					<img src="images/search/logos/bar.png" alt="bar" class="services"> Bar / Lounge <br>
+					<img src="images/search/logos/pool.png" alt="pool" class="services"> Pool <br>
+				</div>
+			</div>
+			<!--closes class="result"-->
+		</div>
+		<!--closes id="all_hotels_london"-->
+
+	</div>
+	<!--closes id="search_hotels"-->
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SPECIFIC SEARCH london - experiences ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+
+	<div id="search_experiences">
+		<div class="small_search">
+			<form name="smallSearchForm">
+				<div class="search-container">
+					<input type="text" placeholder="Search new destination..." name="search" id="searchSmallInputExperiences"
+					 autocomplete="off">
+					<button style="float:left" type="submit"><i class="fa fa-search"></i></button>
+				</div>
+				<div class="searchParameters2">
+					<label style="width:100%"><b>Date: &nbsp; </b></label>
+					<input class="col-10" type="date" name="date1" required><br>
+				</div>
+				<div class="searchParameters2">
+					<label><b>Keywords: &nbsp; </b></label>
+					<input class="col-10" type="text" name="keyword" required><br>
+				</div>
+				<div class="searchParameters2" style="height:85.433px">
+					<label><b>Price range: &nbsp; </b></label>
+					<input type="range" name="price" id="priceInput" min="0" max="300" step="5" value="100" oninput="priceOutput.value = priceInput.value">
+					<output name="priceOutput" id="priceOutput">100</output>
+				</div>
+				<div class="specialSearchDiv">
+					<div id="smallParticipants">
+						<label style="width:100%"><b>Participants: &nbsp; </b></label>
+						<select class="f1to15Group"></select>
+					</div>
+					<div id="smallCheckbox">
+						<input type="checkbox" name="typeEx1" class="check" value="Family" checked> Family<br>
+						<input type="checkbox" name="typeEx2" class="check" value="Couple"> Couple<br>
+						<input type="checkbox" name="typeEx3" class="check" value="Adventure"> Adventure<br>
+						<input type="checkbox" name="typeEx4" class="check" value="Nature"> Nature<br><br>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!--closes class="small_search"-->
+		<div id="all_experiences_london" class="row-edit">
+
+			<div class="result">
+				<div class="result_picturexp"><img src="images/search/london/london1exp.png" alt="london" class="result_pic"></div>
+				<div class="result_text">
+					<p class="result_name"> Explore Harry Potter's London Tour </p>
+					<p>Location: Picadilly Circus, The West End <br> Price: $14 <br> Next dates: <br> &nbsp; &nbsp; December 14th <br>
+						&nbsp; &nbsp; December 16th <br> &nbsp; &nbsp; December 22nd</p>
+				</div>
+				<div class="result_logos">
+					<br> <br> <br> <img src="images/search/logos/web.png" alt="web" class="services"> Visit their <a href="https://www.wbstudiotour.co.uk/explore-the-tour">website
+					</a> <br>
+					Rating: <img src="images/search/stars/entera.png" alt="star" class="services">
+					<img src="images/search/stars/entera.png" alt="star" class="services">
+					<img src="images/search/stars/entera.png" alt="star" class="services">
+					<img src="images/search/stars/entera.png" alt="star" class="services">
+					<img src="images/search/stars/vacia.png" alt="star" class="services">
+				</div>
+			</div>
+			<!--closes class="result"-->
+
+			<div class="result">
+				<div class="result_picturexp"><img src="images/search/london/london2exp.png" alt="london" class="result_pic"></div>
+				<div class="result_text">
+					<p class="result_name"> Waterloo Hidden Jazz Club </p>
+					<p>Location: Vaults Theatre, LB of Lambeth <br> Price: $21 <br> Next dates: <br> &nbsp; &nbsp; December 13th <br>
+						&nbsp; &nbsp; December 14th <br> &nbsp; &nbsp; December 15th </p>
+				</div>
+				<div class="result_logos">
+					<br> <br><img src="images/search/logos/web.png" alt="web" class="services"> Visit their <a href="https://www.hiddenjazzclub.com/">website
+					</a> <br>
+					<img src="images/search/logos/accessible.png" alt="accessible" class="services"> Accessible <br>
+					<img src="images/search/logos/bar.png" alt="bar" class="services"> Bar / Lounge <br>
+					Rating: <img src="images/search/stars/entera.png" alt="star" class="services">
+					<img src="images/search/stars/entera.png" alt="star" class="services">
+					<img src="images/search/stars/entera.png" alt="star" class="services">
+					<img src="images/search/stars/entera.png" alt="star" class="services">
+					<img src="images/search/stars/media.png" alt="star" class="services">
+				</div>
+			</div>
+			<!--closes class="result"-->
+
+			<div class="result">
+				<div class="result_picturexp"><img src="images/search/london/london3exp.png" alt="london" class="result_pic"></div>
+				<div class="result_text">
+					<p class="result_name"> London's Top Tour: Fun Guide! </p>
+					<p>Location: Green Park Underground station <br> Price: $55 <br> Next dates: <br> &nbsp; &nbsp; December 14th <br>
+						&nbsp; &nbsp; December 18th <br> &nbsp; &nbsp; December 20th </p>
+				</div>
+				<div class="result_logos">
+					<br> <br> <br> <img src="images/search/logos/web.png" alt="web" class="services"> Visit their <a href="https://www.airbnb.es/experiences/203605">website
+					</a> <br>
+					Rating: <img src="images/search/stars/entera.png" alt="star" class="services">
+					<img src="images/search/stars/entera.png" alt="star" class="services">
+					<img src="images/search/stars/entera.png" alt="star" class="services">
+					<img src="images/search/stars/media.png" alt="star" class="services">
+					<img src="images/search/stars/vacia.png" alt="star" class="services">
+				</div>
+			</div>
+			<!--closes class="result"-->
+			<div class="result">
+				<div class="result_picturexp"><img src="images/search/london/london4exp.png" alt="london" class="result_pic"></div>
+				<div class="result_text">
+					<p class="result_name"> A Fun Walking Tour of Westminster </p>
+					<p>Location: Heathfield <br> Price: $58 <br> Next dates: <br> &nbsp; &nbsp; December 17th <br> &nbsp; &nbsp;
+						December 22th <br> &nbsp; &nbsp; December 28th </p>
+				</div>
+				<div class="result_logos">
+					<br><br><br><img src="images/search/logos/web.png" alt="web" class="services"> Visit their <a href="https://www.airbnb.es/experiences/475253">website
+					</a> <br>
+					Rating: <img src="images/search/stars/entera.png" alt="star" class="services">
+					<img src="images/search/stars/entera.png" alt="star" class="services">
+					<img src="images/search/stars/entera.png" alt="star" class="services">
+					<img src="images/search/stars/entera.png" alt="star" class="services">
+					<img src="images/search/stars/entera.png" alt="star" class="services">
+				</div>
+			</div>
+			<!--closes class="result"-->
+			<div class="result">
+				<div class="result_picturexp"><img src="images/search/london/london5exp.png" alt="london" class="result_pic"></div>
+				<div class="result_text">
+					<p class="result_name"> Food @ the Barn</p>
+					<p>Location: Vaults Theatre, LB of Lambeth <br> Price: $21 <br> Next dates: <br> &nbsp; &nbsp; December 13th <br>
+						&nbsp; &nbsp; December 14th <br> &nbsp; &nbsp; December 15th </p>
+				</div>
+				<div class="result_logos">
+					<br><br><img src="images/search/logos/web.png" alt="web" class="services"> Visit their <a href="https://www.airbnb.es/experiences/272663?guests=2&source=pdpother">website
+					</a> <br>
+					<img src="images/search/logos/accessible.png" alt="accessible" class="services"> Accessible <br>
+					Rating: <img src="images/search/stars/entera.png" alt="star" class="services">
+					<img src="images/search/stars/entera.png" alt="star" class="services">
+					<img src="images/search/stars/entera.png" alt="star" class="services">
+					<img src="images/search/stars/entera.png" alt="star" class="services">
+					<img src="images/search/stars/media.png" alt="star" class="services">
+				</div>
+			</div>
+			<!--closes class="result"-->
+		</div>
+		<!--closes id="all_experiences_london"-->
+
+	</div>
+	<!--closes id="search_experiences"-->
+
+
+
+	</div>
+	<!--closes id="busqueda"-->
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FOOTER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<footer>
+		<div class="col-4">
+			<p> Follow us on:</p>
+			<p> <a href="https://www.instagram.com/"><img src="images/instagram.png" alt="instagram logo" class="small_icon">
+					&nbsp; Instagram </a> &nbsp; | &nbsp;
+				<a href="https://www.linkedin.com/"><img src="images/linkedin.png" alt="linkedin logo" class="small_icon">&nbsp;
+					Linkedin</a>&nbsp; | &nbsp;
+				<a href="https://twitter.com/"><img src="images/twitter.png" alt="twitter logo" class="small_icon">&nbsp; Twitter
+				</a></p>
+		</div>
+
+		<div class="col-8">
+			<p><img src="images/logo.png" alt="LAZAN logo" height="30" width="100"></p>
+			<ul id="footer_list">
+				<li class="col-3">&#10003; Know more</li>
+				<li class="col-3">&#10003; Eat better</li>
+				<li class="col-3">&#10003; Travel better</li>
+				<li class="col-3">&#10003; Live better</li>
+			</ul>
+
+			<p>&copy; LAZAN 2018 &nbsp; &nbsp; &nbsp; <a href="#" data-toggle="modal" data-target="#modalTer">Terms of Use</a>
+				&nbsp;
+				| &nbsp; <a href="#" data-toggle="modal" data-target="#modalPr">Privacy Policy</a> &nbsp; </p>
+			<!-- Modal -->
+			<div class="modal fade" id="modalTer" role="dialog">
+				<div class="modal-dialog">
+
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Terms of Use</h4>
+						</div>
+						<div class="modal-body">
+							<p>The Terms of Service Agreement is mainly used for legal purposes by companies which provide software or
+								services, such as browsers, e-commerce, search engines, social media,
+								and transport services. <br>A legitimate terms-of-service agreement is legally binding and may be subject to
+								change. Companies can enforce the terms by refusing service.
+								Customers can enforce by filing a suit or arbitration case if they can show they were actually harmed by a
+								breach of the terms. <br>There is a heightened risk of data going
+								astray during corporate changes, including mergers, divestitures, buyouts, downsizing, etc., when data can be
+								transferred improperly. </p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="modalPr" role="dialog">
+				<div class="modal-dialog">
+
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Privacy policy</h4>
+						</div>
+						<div class="modal-body">
+							<p>You can use our services in a variety of ways to manage your privacy. For example, you can sign up for a
+								Google Account if you want to create and manage content like
+								emails and photos, or see more relevant search results.<br> And you can use many Google services when you’re
+								signed out or without creating an account at all, like searching
+								on Google or watching YouTube videos.<br> You can also choose to browse the web privately using Chrome in
+								Incognito mode. And across our services, you can adjust your privacy
+								settings to control what we collect and how your information is used. </p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+
+	<script src="script/javascript/javascr.js"></script>
+
+	<!--Below is some of the code of js for the gallery
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>-->
+	<script src="script/js-gallery/multislider.js"></script>
+	<script>
+		$('#mixedSlider').multislider({
+			duration: 750,
+			interval: 3500
+		});
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,1654 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Patrick+Hand+SC');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+
+/*Making the layout responsive with columns*/
+* {
+    box-sizing: border-box;
+}
+
+[class*="col-"] {
+    float: left;
+	/*Antes 15px*/
+    padding: 5px;
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+}
+/* CSS FOR LOGO */
+#logo {
+	float: left;
+	width: 230px;
+	height: 80px;
+  padding:0px;
+  padding-left: 100px;
+  margin:0px;
+}
+
+/* ---------------------------------- MAIN PARTS OF LAYOUT ---------------------------------- */
+
+/*HEADER*/
+header{
+	background-color: #ebfaeb;
+	text-align: left;
+	font-size:20px;
+	color: black;
+	border-radius: 0px;
+	overflow:auto;
+	padding: 10px;
+	/*Añadido, no tengo claro por que?*/
+	size:100%;
+}
+
+/*SECTION*/
+section {
+/*flex:100%;*/
+	background-color: white;
+	text-align: justify;
+	padding: 100px;
+	border-radius:0px;
+	margin: 15px;
+	padding-top: 0px;
+	margin-top: 0px;
+}
+
+/*BODY*/
+body{
+	font-family:Comfortaa;
+	background-color: white;
+}
+
+
+
+/* ------------------------------------------------------ PARA LAS FOTOS DE EQUIPO ------------------------------------------------------ */
+img.avatar {
+  height: 75%;
+  width: 75%;
+  border-radius: 50%;
+  border: 2px solid black;
+  /* vertical-align:middle; */
+  /* margin: auto; */
+  margin-left: 25px;
+
+}
+/* Three columns side by side */
+.column {
+  float: left;
+  width: 20%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+  left:0;
+  right:0;
+  /* align: center; */
+  /* display: flex; */
+  align-items:center;
+}
+
+.hola {
+  text-align: center;
+
+}
+
+.row{
+  clear:both;
+}
+
+.title {
+  color: grey;
+}
+
+.card {
+  /* vertical-align:middle; */
+
+}
+
+.team{
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+
+/*ARTICLE*/
+article {
+	flex:100%;
+	background-color: white;
+	text-align: justify;
+	padding: 2%;
+	border-radius:0px;
+	margin: 0px;
+}
+
+/*FOOTER*/
+footer {
+	background-color: #a1c7eb;
+	padding: 5px;
+	font-size: 12px;
+	color: black;
+	margin: 5px 0px 0px 0px;
+	overflow:auto;
+	width:100%
+}
+
+
+/*Company title*/
+h1{
+/*ERROR SI HAGO EL WIDTH 100% ROMPE EL SLIDEGALLERY*/
+/*	width: 100%;*/
+	float:left;
+  color:black;
+	font-family: Comfortaa;
+	font-size: 300%;
+	margin:4% 1% 0% 0%;
+  font-weight: 600;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+/*Setting header options horizontal menu*/
+ul#reglog {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    float: right;
+    font-size: 18px;
+    margin-left: 30px;
+    padding-right: 100px;
+}
+
+#reglog li {
+    float: left;
+    margin-top: 25px;
+    font-weight: 600;
+}
+
+#reglog li a {
+    display: block;
+    color: #4c4c4c;
+    text-align: center;
+    padding: 10px 10px;
+    text-decoration: none;
+}
+
+#reglog li a:hover {
+    opacity:0.7;
+    color: black;
+    border: 2px solid #c2f0c2;
+    font-weight: 1000;
+    border-radius: 30%;
+    background-color: #c2f0c2;
+}
+
+/*Setting options for the menu under the header*/
+ul#navigation {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #D3D3D3;
+    border-radius: 0px;
+    font-size: 16px;
+}
+
+#navigation li {
+    float: left;
+}
+
+#navigation li a {
+    display: block;
+    color: #4c4c4c;
+    text-align: center;
+    padding: 14px 25px;
+    text-decoration: none;
+}
+
+#navigation li a:hover {
+    background-color: white;
+    color: #4c4c4c;
+}
+
+.active {
+    background-color: white;
+    color:  #4c4c4c;
+    font-weight: 900;
+}
+
+
+
+.signupButton {
+  float: right;
+  width: 49%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  border-radius: 10px;
+  font-family: Comfortaa;
+  font-size: 14px;
+}
+
+.loginButton {
+  float: centered;
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  border-radius: 10px;
+  font-family: Comfortaa;
+  font-size: 14px;
+}
+
+.cancelButton {
+    padding: 14px 20px;
+    background-color: #f44336;
+    float: left;
+    width: 49%;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    border-radius: 10px;
+    font-family: Comfortaa;
+    font-size: 14px;
+}
+
+
+/*Sets the color and font for the form input hint*/
+input{
+	color: black;
+	font-family: Comfortaa;
+	/*width:100%;*/
+	font-size:15px;
+  background: #f1f1f1;
+  margin: 5px 0 22px 0;
+  padding: 6px;
+  border:1px solid #c0c2c4;
+}
+
+.format {
+    background-color: #fefefe;
+    border: 1px solid #888;
+    width: 60%;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h3 {
+  font-family: Amatic SC;
+  text-align: left;
+  font-size: 200%;
+  font-weight: 1000;
+}
+
+#navigationbar{
+  margin: 2px 0px;
+}
+
+button.headerbuttons{
+  float:right;
+  background-color: white;
+  padding: 14px 20px;
+  width: 7%;
+  margin:30px 20px 10px 10px;/*Top right bottom left*/
+  cursor: pointer;
+  opacity: 0.8;
+  border-radius: 8px;
+  font-family: Comfortaa;
+  font-size: 14px;
+}
+
+.headerbuttons:hover {
+    background-color: #D3D3D3;
+    color: #4c4c4c;
+    font-weight: 900;
+}
+
+/*Actions on links*/
+a:link, a:visited {
+	color: #4c4c4c;
+	text-decoration:none;
+}
+
+a:hover {
+	color: black;
+  text-decoration:none;
+  font-weight: 1000;
+}
+
+.small_icon{
+	height:20px;
+	width:20px;
+}
+
+/*Footer characteristics*/
+ul#footer_list{
+	list-style-type: none;
+	overflow: hidden;
+	padding:5px;
+	margin:5px;
+}
+
+ul#footer_list li {
+	font-size: 10px;
+	text-align: center;
+	padding: 14px 14px;
+	margin-top:-15px;
+	text-decoration: none;
+	float:left;
+}
+
+
+/*Make the div flexible*/
+.row-edit {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row-edit2 {
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    .row-edit{
+        flex-direction: column;
+    }
+}
+
+/*Setting Buttons characteristics*/
+button{
+	background-color:white;
+	float:right;
+	text-decoration:none;
+	cursor:pointer;
+	border:none;
+}
+
+#pass{
+  font-size: 11px;
+  float:right;
+}
+
+/* ------------------------------------------------------ WHO TO FOLLOW -------------------------------------------------- */
+
+img.users{
+  height:80px;
+  /* width:100px; */
+}
+
+div.follow{
+  width:33%;
+  /*border: 2px solid #a1c7eb;*/
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  margin: 5px 6px;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+  margin-bottom: 2%;
+}
+
+.number {
+  font-size: 13px;
+  text-align: center;
+}
+
+.imageUser{
+  float:left;
+  margin-right: 70px;
+}
+
+.nameUser {
+  text-align: left;
+  float: left;
+}
+
+div.under_pic{
+  clear:both;
+	margin-top: 100px;
+}
+/* PARA LAS FOTOS DE EQUIPO*/
+
+/* ------------------------------------------------------ FOR THE REGISTER/LOGIN PAGES -------------------------------------------------- */
+
+
+#menu{display: block;}
+
+#navigationbar{display: block;}
+
+#regForm{
+	display: none;
+	margin: 1% 0%;
+}
+
+#regForm h2{
+	font-size: 40px;
+}
+#loginForm{
+	display: none;
+	margin: 1% 0%;
+}
+
+#loginForm h2{
+	font-size: 40px;
+}
+
+#mixedSlider{display:block;}
+#suggestions{display:block;}
+#popular{display:none;}
+.onlyHotels{display:none;}
+.onlySearch{display:none;}
+
+
+/* ---------------------------------------------------- User Profile ------------------------------------------------- */
+#profileContainer{
+  width: 100%;
+  overflow: auto;
+  display: flex;
+
+}
+
+#leftProfile {
+  display: none;
+	width:31%;
+	background: #f1f1f1;
+	padding: 1%;
+  border-radius: 3px;
+  float:left;
+	margin-top: 1%;
+  margin-right: 1%;
+
+}
+
+#leftProfile ul{
+  list-style-type: none;
+}
+
+#leftProfile li{
+  font-size: 18px;
+}
+
+.regButton{
+	background-color:#a1c7eb;
+	float:right;
+	text-decoration:none;
+	cursor:pointer;
+	border-radius: 5px;
+  border:1px solid black;
+  margin:5px;
+  margin-top: 25px;
+  padding: 3% 4%;
+}
+
+.negr {
+  border:0.5px solid #4c4c4c;
+}
+
+.listExplanation{
+  margin-top: 5px;
+}
+
+
+#rightProfile {
+  display: none;
+	width:64%;
+  float:left;
+	background-color: #d5e6f6;
+	text-align: justify;
+	padding: 1%;
+  border-radius: 3px;
+  margin: 1% 0%;
+  margin-bottom: 0px;
+
+}
+
+#rightProfile h2 {
+  font-size: 45px;
+  font-weight: 900;
+
+}
+
+#lastReviews{
+  display: none;
+}
+
+#lastReviewContainerExtra{
+  display: none;
+}
+
+#lastReviewTitle{
+  margin-bottom: 0px;
+}
+
+.lastReviewContainer{
+  overflow: auto;
+  border: 1px solid black;
+  background: white;
+  margin-top: 10px;
+}
+
+.lastReviewPict img{
+  width: 100%;
+}
+
+.lastReviewPict{
+  overflow: auto;
+  width: 20%;
+  margin: 1%;
+  margin-right: 2%;
+  float: left;
+  min-width: 214px;
+}
+
+.lastReviewDetails{
+  width: fit-content;
+  margin: 0;
+  overflow: auto;
+  float: left;
+}
+
+.lastReviewDetails h2{
+  font-weight: 900;
+  font-size: 40px;
+}
+
+/*.opinion{
+  overflow: auto;
+  float: left;
+  margin-right: 1%;
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+  border-radius: 5px;
+}*/
+
+.lastReviewOpinion{
+  overflow: auto;
+  float: left;
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin: auto;
+}
+
+.lastReviewOpinion h3{
+  text-align: left;
+  margin: 5px;
+  margin-bottom: 30px;
+}
+
+#savedPlaces{
+  display: none;
+}
+
+.savedPlacesOpinionsContainer{
+  width: 100%;
+  overflow: auto;
+  padding: 0 1%;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.savedPlacesOpinion{
+  overflow: auto;
+  float: left;
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: left;
+  width: 50%;
+
+  margin: 5px;
+}
+
+.savedPlacesOpinion h3{
+  text-align: left;
+  margin: 5px;
+  margin-bottom: 30px;
+}
+
+.savedPlacesOptions button{
+  background-color: #a1c7eb;
+  border-radius: 5px;
+  margin: 4px;
+  padding: 5% 10%;
+  width: 90%;
+  border: 0.5px solid black;
+}
+
+.savedPlacesOptions{
+  /*width: fit-content;*/
+  margin: 0;
+  overflow: auto;
+  float: right;
+  text-align: center;
+  margin: 1px;
+}
+
+
+/*Sets the styling for the preferences in the bottom of the section*/
+span.pref {
+	border: 1px solid black;
+	padding:5px;
+	margin:5px 6px;
+	font-size:75%;
+	/*If it doesn't fit in one line, takes the whole box to the next line*/
+	display: inline-block;
+}
+
+/*Setting Buttons characteristics*/
+button{
+	background-color:white;
+	float:right;
+	text-decoration:none;
+	cursor:pointer;
+	border:none;
+}
+
+#personalinfo, #lastReviews {
+  display:none;
+  width:90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#infoUsername{display:inline;}
+
+#infoName, #infoSurname, #infoPhone, #infoBirthdate{
+    width:90%;
+    margin-right: 5%;
+    margin-left: 0%;
+}
+
+ #infoAddress, #infoEmail{
+   width:95%;
+   margin-right: 5%;
+   margin-left: 0%;
+ }
+
+#titlePersonalInfo{
+  width:100%;
+  margin: 1% 0%;
+  margin-bottom: -1%;
+}
+
+
+.width50{
+  float:left;
+  width:50%;
+  margin-top: 3%;
+}
+
+.width25{
+  float:left;
+  width:25%;
+  margin-top: 3%;
+}
+
+/*Styling for "My activity in the App"*/
+span.dot {
+  height: 120px;
+  width: 120px;
+  background-color: #cccccc;
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+  font-size: 20px;
+  margin: 0px 5px 5px 12px;
+}
+
+.changeButton {
+  width: 20%;
+  float:left;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 0px;
+  margin-top: 2%;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  border-radius: 10px;
+  font-family: Comfortaa;
+  font-size: 14px;
+}
+
+/* --------------------------------------------------------------------- SEARCH --------------------------------------------------------------- */
+/*Search bar*/
+#searchBoxHotels, #searchBoxExperiences{
+  display:none;
+	width: 98%;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	margin-left:auto;
+	margin-right:auto;
+	background-image: url("../images/search/paisaje3.jpg");
+	background-repeat:no-repeat;
+	background-size: 100%;
+}
+
+#searchInputHotels, #searchInputExperiences{
+	height:36.2833px;
+	width:90%;
+	margin: 8px 0px;
+}
+
+#searchEngine{
+	width:60%;
+	padding: 2% 0%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.search-container {
+  float:left;
+  width: 93%;
+  margin-bottom: 3%;
+}
+
+.search-container input[type=text] {
+  padding: 6px;
+  margin: 8px 0px;
+  font-size: 17px;
+  border: none;
+}
+
+.search-container button {
+  width:10%;
+  float: right;
+  padding: 6px 6px;
+  margin-top: 8px;
+  margin-right: 0px;
+  margin-left: 0px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background: #ccc;
+}
+
+.searchParameters{
+	margin-bottom: 3%;
+	float:left;
+	width:33%;
+}
+
+.searchParameters label{
+	width:100%;
+}
+
+.smallSearchParameters{
+	margin-bottom: 3%;
+	float:left;
+	width:20%;
+}
+
+#participantSearchParameters{
+  float:left;
+  width:30%;
+}
+
+#priceInput{
+	float:left;
+	width:67%;
+	margin-right: 5%;
+}
+
+#priceOutput{
+	float:left;
+	width: 10%;
+}
+
+
+
+/* ----------------------------------------------- INSPIRATION / POPULAR ------------------------------------------- */
+
+.search_pic{
+  height:220px;
+}
+
+.imgcontainer {
+    position: relative;
+    text-align: center;
+    color: black;
+    font-weight: 800;
+    width:25%;
+    border: 2px solid white;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    float: left;
+    font-size: 16px;
+    margin-bottom: 2%;
+}
+
+.bottom-center {
+    font-size: 17px;
+    position: absolute;
+    bottom: 0px;
+    background-color: white;
+    width: 105%;
+    opacity:0.8;
+    height: 25px;
+}
+#reload{
+	text-align:center;
+  padding-bottom: 50px;
+}
+#reload a{
+	color:#4c4c4c;
+}
+
+#more{
+  display: none;
+}
+
+
+/* ------------------------------------------------------ SPECIFIC SEARCH (london hotels and experiences)-------------------------------------------------- */
+
+#searchInputSmallHotels, #searchInputSmallExperiences{
+	height:36.2833px;
+	width:90%;
+	margin: 8px 0px;
+}
+
+#search_hotels, #search_experiences{
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
+  width:92.5%;
+  padding-bottom: 5%
+}
+
+#searchSmallInputExperiences, #searchSmallInputHotels{
+  height:36.2833px;
+  width:60%;
+  float:left;
+  margin: 8px 0px;
+}
+
+#smallParticipants{
+  float:left;
+  width:50%;
+}
+
+.specialSearchDiv{
+  width:60%;
+  float:left;
+}
+
+#smallCheckbox{
+  float:left;
+  width:47%;
+  margin-left: 2%;
+}
+
+.small_search{
+  width: 30%;
+  float:left;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top: 5%;
+  background-color: #d5e6f6;
+  border-radius: 5px;
+  padding-left: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+
+}
+
+#all_hotels_london, #all_experiences_london{
+  display:none;
+  width:70%;
+  background-color: white;
+  float:right;
+  border-radius: 5px;
+  margin-bottom: 2%;
+}
+
+.result {
+  margin-top: 1.5%;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-bottom: 1.5%;
+  padding: 1%;
+  border: 1px solid white;
+  background-color: #e6e6e6;
+  border-radius: 5px;
+  width:100%
+}
+
+.result_picture {
+  float:left;
+  width: 30%;
+}
+
+.result_picturexp {
+  float:left;
+  width: 35%;
+}
+
+.result_pic {
+  width:90%;
+}
+
+.result_text {
+  height: 100px;
+  float:left;
+  width: 38%;
+  font-size: 15px;
+}
+
+.result_name {
+  font-size: 18px;
+  text-align: left;
+}
+
+.result_logos{
+    width: 25%;
+    float:right;
+}
+
+.services {
+  width: 17px;
+  padding-bottom: 7px;
+}
+
+/* -------------------------------------------- the next classes are used for small search hotels and experiences -------------------------------------------- */
+.searchParameters2{
+  float: left;
+  width: 60%;
+  margin-bottom: 2%;
+}
+
+.bigSearchParameters2{
+  float:left;
+  width:100%;
+  margin-bottom: 2%;
+}
+
+.smallSearchParameters2{
+  float:left;
+  width:20%;
+}
+
+
+
+/* --------------------------------------------------- HOTEL INFO ----------------------------------------------- */
+
+.establishmentInfo{
+  display: none;
+  border: 2px solid black;
+  padding: 10px;
+  overflow: auto;
+  border-radius: 3px;
+}
+
+.establishmentHeader{
+  overflow: auto;
+}
+
+.establishmentPic img{
+  width: 100%;
+}
+
+.establishmentPic{
+  overflow: auto;
+  width: 20%;
+  margin: 1%;
+  margin-right: 2%;
+  float: left;
+  min-width: 214px;
+}
+
+.establishmentDetails{
+  width: fit-content;
+  margin: 0;
+  overflow: auto;
+  float: left;
+}
+
+.establishmentDetails h2{
+  font-weight: 900;
+  font-size: 40px;
+}
+
+
+.establishmentOptions button{
+  background-color: #a1c7eb;
+  border-radius: 5px;
+  margin: 4px;
+  padding: 5% 10%;
+  width: 90%;
+  border: 0.5px solid black;
+}
+
+.establishmentOptions{
+  /*width: fit-content;*/
+  margin: 0;
+  overflow: auto;
+  float: right;
+  text-align: center;
+  margin: 1% 2%;
+}
+
+.establishmentOpinions{
+  width: 100%;
+  overflow: auto;
+  padding: 0 1%;
+  display: flex;
+}
+
+.opinion{
+  overflow: auto;
+  float: left;
+  margin-right: 1%;
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: left;
+  width: 32%;
+  border-radius: 5px;
+}
+
+.opinion h3{
+  text-align: left;
+  margin: 5px;
+  margin-bottom: 30px;
+}
+
+/* --------------------------------------------------- RESERVATION ----------------------------------------------- */
+
+.reservation{
+  display: none;
+  border: 2px solid black;
+  padding: 10px;
+  overflow: auto;
+  border-radius: 3px;
+}
+
+.reservationHeader{
+  overflow: auto;
+}
+
+.reservationPic img{
+  width: 100%;
+}
+
+.reservationPic{
+  overflow: auto;
+  width: 20%;
+  margin: 10px;
+  float: left;
+  min-width: 214px;
+}
+
+.reservationTitle{
+  width: 50%;
+  margin: 0;
+  overflow: auto;
+  float: left;
+}
+
+.progressbarContainer{
+  margin-top: 10px;
+  width: 100%;
+  overflow: auto;
+}
+
+.progressbar{
+  counter-reset: step;
+}
+
+.progressbar li {
+  list-style-type: none;
+  float: left;
+  width: 33.33%;
+  position: relative;
+  text-align: center;
+}
+
+.progressbar li:before{
+  content: counter(step);
+  counter-increment: step;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border: 2px solid #252525;
+  display: block;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  border-radius: 50%;
+  background-color: white;
+  position: relative;
+  z-index: 100;
+  font-weight: bold;
+}
+
+.progressbar li:after{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #252525;
+  top: 15px;
+  left: -50%;
+  z-index: 90;
+}
+
+.progressbar li:first-child:after {
+  content: none;
+}
+.progressbar li.actualStepPB {
+  color: #a1c7eb;
+}
+.progressbar li.actualStepPB:before {
+  border-color: #a1c7eb;
+}
+.progressbar li.actualStepPB + li:after {
+  background-color: #a1c7eb;
+}
+
+/*Room Selection*/
+.reservationBodySection{
+  margin-top: 10px;
+}
+
+#roomSelilunion, #roomSelfellina, #roomSelretiro, #roomSelfrancisco, #roomSelcocina{
+  display: block;
+}
+.roomSelectionBody{
+  overflow: auto;
+  width: 100%;
+
+}
+
+.reservationArrivalDate{
+  width: 33%;
+  float: left;
+  position: relative;
+  overflow: auto;
+}
+
+.reservationCheckOutDate{
+  width: 33%;
+  float: left;
+  position: relative;
+  overflow: auto;
+}
+
+.adultsSelector{
+  width: 33%;
+  float: left;
+  overflow: auto;
+}
+
+.childSelctor{
+  width: 33%;
+  float: left;
+  overflow: auto;
+}
+
+.extraInfo{
+  width: 30%;
+  float: right;
+  overflow: auto;
+}
+
+.nextButtonDiv{
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  margin-top: 20px;
+}
+
+.nextButtonDiv button{
+  background-color: #a1c7eb;
+  border-radius: 5px;
+  margin: 4px;
+  border: 1px solid black;
+  padding:0.5% 1%;
+
+}
+
+/*Personal Information*/
+
+#persInfoilunion, #persInfofellina, #persInforetiro, #persInfofrancisco, #persInfococina{
+  overflow: auto;
+  width: 100%;
+  display: none;
+}
+
+.personalInfoInput{
+  width: 33%;
+  float: left;
+  position: relative;
+  overflow: auto;
+}
+
+.personalInfoButton{
+  background-color: #a1c7eb;
+  border-radius: 10px;
+  margin: 4px;
+  border: 1px solid black;
+}
+
+/*Payment Information*/
+
+#payInfoilunion, #payInfofellina, #payInforetiro, #payInfofrancisco, #payInfococina{
+  overflow: auto;
+  width: 100%;
+  display: none;
+}
+
+/*Modal*/
+#leaveModal{
+
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 200; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+}
+
+.modalContent {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%; /* Could be more or less, depending on screen size */
+}
+
+.modalHeader{
+  width: 100%;
+}
+
+.modalBody{
+  overflow: auto;
+  margin-top: 10px;
+}
+
+
+
+.modalButton{
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.modButton {
+  background-color: #a1c7eb;
+  border-radius: 10px;
+  margin: 4px;
+  border: 1px solid black;
+
+}
+/* --------------------------------------------------- REVIEWS ----------------------------------------------- */
+.review{
+  display: none;
+  border: 2px solid black;
+  padding: 10px;
+  overflow: auto;
+  border-radius: 3px;
+}
+
+.reviewHeader{
+  overflow: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.reviewPic img{
+  width: 100%;
+}
+
+.reviewPic{
+  overflow: auto;
+  width: 20%;
+  margin: 10px;
+  float: left;
+  min-width: 214px;
+}
+
+.reviewTitle{
+  width: fit-content;
+  margin: 0 20px;
+  overflow: auto;
+  float: left;
+}
+
+.reviewTitle h2{
+  font-size: 60px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.reviewStars{
+  float: right;
+  padding: 20px;
+  min-width: 256px;
+}
+
+.reviewOptions{
+  margin: 10px 10%;
+  justify-content: space-around;
+  display: flex;
+}
+
+.reviewText{
+  width: 80%;
+  margin: 10px 10%;
+}
+
+.reviewText textarea{
+  width: 100%;
+  height: fit-content;
+  min-height: 100px;
+  overflow: auto;
+  resize: vertical;
+}
+
+.reviewButtons{
+  margin: 10px 10%;
+}
+
+.backBrowsing {
+  float: left;
+  width: 100px;
+  background-color: #a1c7eb;
+  color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  border-radius: 10px;
+  font-family: Comfortaa;
+  font-size: 14px;
+}
+
+.submitReview {
+  float: right;
+  width: 100px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  margin-right: 8px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  border-radius: 10px;
+  font-family: Comfortaa;
+  font-size: 14px;
+}
+
+.cancelReview {
+    padding: 14px 20px;
+    background-color: #f44336;
+    float: right;
+    width: 100px;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    border-radius: 10px;
+    font-family: Comfortaa;
+    font-size: 14px;
+}
+
+
+/* STARS TEST */
+
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+fieldset, label { margin: 0; padding: 0; }
+.reviewStars h1 { font-size: 1.5em; margin: 10px; }
+
+/****** Style Star Rating Widget *****/
+
+.rating {
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; }
+.rating > label:before {
+  margin: 5px;
+  font-size: 2.5em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label {
+  color: #ddd;
+ float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
+
+
+/* ------------------------------------------------------ GALLERY -------------------------------------------------- */
+h2 {
+    margin:15px auto;
+    font-family: Amatic SC;
+    font-weight: 800;
+}
+p {
+text-align:justify;
+}
+.Gcontainer { margin:30px auto;}
+#mixedSlider {
+position: relative;
+}
+#mixedSlider .MS-content {
+white-space: nowrap;
+overflow: hidden;
+margin: 0 5%;
+}
+#mixedSlider .MS-content .item {
+display: inline-block;
+width: 33.3333%;
+position: relative;
+vertical-align: top;
+overflow: hidden;
+height: 100%;
+white-space: normal;
+padding: 0 10px;
+}
+@media (max-width: 991px) {
+#mixedSlider .MS-content .item {
+  width: 50%;
+}
+}
+@media (max-width: 767px) {
+#mixedSlider .MS-content .item {
+  width: 100%;
+}
+}
+#mixedSlider .MS-content .item .imgTitle {
+  position: relative;
+}
+#mixedSlider .MS-content .item .imgTitle .blogTitle {
+  margin: 0;
+  text-align: center;
+  letter-spacing: 2px;
+  color: #252525;
+  /*font-style: italic;*/
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  bottom: 0;
+  font-weight: bold;
+  padding: 0 0 2px 10px;
+}
+#mixedSlider .MS-content .item .imgTitle img {
+  height: auto;
+  width: 100%;
+}
+#mixedSlider .MS-content .item p {
+  font-size: 16px;
+  margin: 2px 10px 0 5px;
+  text-indent: 15px;
+}
+#mixedSlider .MS-content .item a {
+  float: right;
+  margin: 0 20px 0 0;
+  font-size: 14px;
+  font-style: italic;
+  color: #007acc;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: linear 0.1s;
+}
+
+#mixedSlider .MS-content .item a:hover {
+  text-shadow: 0 0 1px grey;
+}
+
+#mixedSlider .MS-controls button {
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  outline: 0;
+  font-size: 50px;
+  top: 95px;
+  color: rgba(0, 0, 0, 0.4);
+  transition: 0.15s linear;
+}
+#mixedSlider .MS-controls button:hover {
+  color: rgba(0, 0, 0, 0.8);
+}
+@media (max-width: 992px) {
+#mixedSlider .MS-controls button {
+  font-size: 30px;
+}
+}
+@media (max-width: 767px) {
+  #mixedSlider .MS-controls button {
+    font-size: 20px;
+  }
+}
+#mixedSlider .MS-controls .MS-left {
+  left: 0px;
+}
+@media (max-width: 767px) {
+  #mixedSlider .MS-controls .MS-left {
+    left: -10px;
+  }
+}
+#mixedSlider .MS-controls .MS-right {
+  right: 0px;
+}
+@media (max-width: 767px) {
+  #mixedSlider .MS-controls .MS-right {
+    right: -10px;
+  }
+}
+#basicSlider { position: relative; }
+
+#basicSlider .MS-content {
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0 2%;
+  height: 50px;
+}
+
+#basicSlider .MS-content .item {
+  display: inline-block;
+  width: 20%;
+  position: relative;
+  vertical-align: top;
+  overflow: hidden;
+  height: 100%;
+  white-space: normal;
+  line-height: 50px;
+  vertical-align: middle;
+}
+@media (max-width: 991px) {
+  #basicSlider .MS-content .item { width: 25%; }
+}
+
+@media (max-width: 767px) {
+  #basicSlider .MS-content .item { width: 35%; }
+}
+
+@media (max-width: 500px) {
+  #basicSlider .MS-content .item { width: 50%; }
+}
+
+#basicSlider .MS-content .item a {
+  line-height: 50px;
+  vertical-align: middle;
+}
+
+#basicSlider .MS-controls button { position: absolute; }
+
+#basicSlider .MS-controls .MS-left {
+  top: 35px;
+  left: 10px;
+}
+
+#basicSlider .MS-controls .MS-right {
+  top: 35px;
+  right: 10px;
+}
