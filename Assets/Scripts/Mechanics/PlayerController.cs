@@ -18,6 +18,8 @@ namespace Platformer.Mechanics
         public AudioClip respawnAudio;
         public AudioClip ouchAudio;
 
+
+
         /// <summary>
         /// Max horizontal speed of the player.
         /// </summary>
@@ -41,6 +43,9 @@ namespace Platformer.Mechanics
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         public Bounds Bounds => collider2d.bounds;
+
+
+        public Transform rootBone;
 
         void Awake()
         {
@@ -68,6 +73,9 @@ namespace Platformer.Mechanics
             {
                 move.x = 0;
             }
+            
+            
+
             UpdateJumpState();
             base.Update();
         }
@@ -118,10 +126,15 @@ namespace Platformer.Mechanics
                 }
             }
 
-            if (move.x > 0.01f)
-                spriteRenderer.flipX = false;
-            else if (move.x < -0.01f)
-                spriteRenderer.flipX = true;
+            if (move.x > 0.01f){
+                //spriteRenderer.flipX = false;
+                    rootBone.rotation = Quaternion.Euler(0,0,90);
+            }
+            else if (move.x < -0.01f){
+                //spriteRenderer.flipX = true;
+                    rootBone.rotation = Quaternion.Euler(0,180,90);
+                }
+                
 
             animator.SetBool("grounded", IsGrounded);
             animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
