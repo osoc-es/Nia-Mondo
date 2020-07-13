@@ -23,14 +23,18 @@ public class WeaponSelector : MonoBehaviour
 
     private ScriptableWeapons currentWeapon;
 
+    public GameObject player;
 
     private void Start()
     {
         selectorCanvas.SetActive(false);
         confirmButton.onClick.AddListener(SelectionConfirmed);
-        
+
         badWeaponButton.onClick.AddListener(BadWeaponSelected);
         goodWeaponButton.onClick.AddListener(GoodWeaponSelected);
+
+        player = GameObject.FindGameObjectWithTag("arbo");
+
 
     }
 
@@ -48,8 +52,8 @@ public class WeaponSelector : MonoBehaviour
 
     private void BadWeaponSelected()
     {
-      SetSelectionText(badWeapon.weaponName);
-      currentWeapon = badWeapon;
+        SetSelectionText(badWeapon.weaponName);
+        currentWeapon = badWeapon;
 
     }
     private void GoodWeaponSelected()
@@ -62,11 +66,22 @@ public class WeaponSelector : MonoBehaviour
     {
         selectorCanvas.SetActive(false);
         Time.timeScale = 1.0f;
+        if (!player.TryGetComponent(out PlayerWeaponController playerWeaponCon))
+            Debug.LogError("No se encuentra el componente PLAYERWEAPONCONTROLLER", this);
+        else playerWeaponCon.SetWeapon(currentWeapon);
+
         gameObject.SetActive(false);
+
+        #if UNITY_EDITOR
+        Debug.Log(player);
+        #endif
+        player.GetComponent<PlayerWeaponController>().SetWeapon(currentWeapon);
+
     }
-    
-    private void SetSelectionText(string weaponName){
-        selectionText.SetText("Has seleccionado como arma:\n" + weaponName );
+
+    private void SetSelectionText(string weaponName)
+    {
+        selectionText.SetText("Has seleccionado como arma:\n" + weaponName);
     }
 
 }
