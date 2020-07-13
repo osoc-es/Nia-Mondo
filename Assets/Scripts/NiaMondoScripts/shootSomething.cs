@@ -1,79 +1,100 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
+using Platformer.Mechanics;
+
 
 public class shootSomething : MonoBehaviour
 {
 
-    public GameObject projectile;
-    public Vector2 velocity;
-    bool canShoot = true;
-    public Vector2 offset = new Vector2(0.4f, 0.1f);
-    //private float cooldown = 1f;
-    float initialPos;
-    float actualPos;
-    float lastVel;
+	public GameObject projectile;
+	public Vector2 velocity;
+	bool canShoot = true;
+	public Vector2 offset = new Vector2(0.4f, 0.1f);
+	//private float cooldown = 1f;
+
+
 
     public Transform weaponHolder;
 
-    private PlayerWeaponController weaponController;
-
     private Animator animator;
+
+
+	private PlayerWeaponController weaponController;
+
+	private bool hasWeapon = false;
+
+	private GameObject player;
+	private PlayerController playerController;
+
+	private int lastDirection = 1;
+	private int direction = 1;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        initialPos = transform.position.x;
         weaponController = GetComponent<PlayerWeaponController>();
         animator = GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("arbo");
+		playerController = player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        int isRight = checkDirection();
-        float vel = velocity.x;
-        if (Input.GetKeyDown(KeyCode.T) && canShoot)
-        {
-            animator.SetBool("shootingSoap", true);
+    	if(!hasWeapon){
+    		checkWeapon();
+    	}
 
+    	updateDirection();
 
+        if(hasWeapon && Input.GetKeyDown(KeyCode.T) && canShoot)
+		{
+        	ThrowSoap();
+			animator.SetBool("shootingSoap", true);
         }
-        initialPos = actualPos;
-        lastVel = vel;
+
+
     }
 
     IEnumerator CanShoot()
     {
-        canShoot = false;
-        yield return new WaitForSeconds(weaponController.GetWeapon().cooldown);
-        canShoot = true;
+    	canShoot = false;
+		yield return new WaitForSeconds(weaponController.GetWeapon().cooldown);
+		canShoot = true;
+		
     }
-    public void ThrowSoap()
-    {
-        GameObject go = (GameObject)Instantiate(projectile, (Vector2)transform.position + offset * checkDirection(), Quaternion.identity);
-        go.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x, velocity.y);
+    
+
+    void checkWeapon(){
+    	if(weaponController.GetWeapon() != null){
+    		hasWeapon = true;
+    	}
+    }
+
+    void ThrowSoap()
+    {   
+    	
+        GameObject go = (GameObject)Instantiate(projectile, (Vector2)transform.position + offset * direction, Quaternion.identity);
+        go.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x*direction, velocity.y);
         StartCoroutine(CanShoot());
     }
-	public void ThrowingSoapFinished(){
+
+	void ThrowingSoapFinished(){
 		animator.SetBool("shootingSoap", false);
 	}
-    int checkDirection()
+
+    void updateDirection()
     {
-        actualPos = transform.position.x;
-        if (actualPos > initialPos)
-        {
-            return 1;
-        }
-        else if (actualPos > initialPos)
-        {
-            return 0;
-        }
-        else
-        {
-            return -1;
-        }
+        direction = Math.Sign(playerController.velocity.x);
+        	if(direction == 0){
+        		direction = lastDirection;
+        	}
+		lastDirection = direction;
+
     }
 
 }
+

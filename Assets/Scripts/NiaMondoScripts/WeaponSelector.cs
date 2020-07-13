@@ -32,6 +32,10 @@ public class WeaponSelector : MonoBehaviour
 
         badWeaponButton.onClick.AddListener(BadWeaponSelected);
         goodWeaponButton.onClick.AddListener(GoodWeaponSelected);
+
+        player = GameObject.FindGameObjectWithTag("arbo");
+
+
     }
 
     //When the player triggers the point the time is stopped and the panel shows up
@@ -67,6 +71,12 @@ public class WeaponSelector : MonoBehaviour
         else playerWeaponCon.SetWeapon(currentWeapon);
 
         gameObject.SetActive(false);
+
+        #if UNITY_EDITOR
+        Debug.Log(player);
+        #endif
+        player.GetComponent<PlayerWeaponController>().SetWeapon(currentWeapon);
+
     }
 
     private void SetSelectionText(string weaponName)
