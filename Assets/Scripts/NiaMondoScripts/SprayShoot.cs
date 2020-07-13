@@ -23,6 +23,7 @@ public class SprayShoot : MonoBehaviour
 
     public int sprayDuration = 100;
 
+
     private bool rechargingSpray = false;
     public void Start()
     {
@@ -54,6 +55,7 @@ public class SprayShoot : MonoBehaviour
 
                 sprayBullet.velocity = playerController.velocity.x;
                 sprayBullet.dir = dir;
+                sprayBullet.damage = sprayScriptable.damage;
                 sprayDuration-=20;
                 if(sprayDuration<= 0 && !rechargingSpray)
                    {

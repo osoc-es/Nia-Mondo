@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Spray
   m_EditorClassIdentifier: 
   weaponName: Espray
-  damage: 0
+  damage: 35
   cooldown: 3
   range: 0
   image: {fileID: 0}

@@ -10,12 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1658460978237467174}
   - component: {fileID: 1577774018119691272}
+  - component: {fileID: 1038294408581739682}
   - component: {fileID: 1605217082131907960}
   - component: {fileID: 1702612949800919892}
   - component: {fileID: 2651140156555518892}
   - component: {fileID: 772289407653213039}
   - component: {fileID: 5843668731025413174}
   - component: {fileID: 1153390212}
+  - component: {fileID: 3774556746532914029}
   m_Layer: 13
   m_Name: Enemy
   m_TagString: Player
@@ -87,6 +89,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1038294408581739682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661912868639658944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3776c3d59702b4fb220cd36d39eb2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!95 &1605217082131907960
 Animator:
   serializedVersion: 3
@@ -288,3 +303,15 @@ EdgeCollider2D:
   - {x: 0.5104275, y: -0.11298562}
   - {x: 0.10404968, y: 0.32413763}
   - {x: 0.24716759, y: 1.0793571}
+--- !u!114 &3774556746532914029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661912868639658944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730203d981c62d74baebb569d655c95a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
