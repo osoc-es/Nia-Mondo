@@ -607,8 +607,8 @@ div.objColRight{
 
 
 .objSize {
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   margin: 10px;
 }
 
@@ -616,7 +616,7 @@ div.objColRight{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 90%;
+  width: 120%;
 }
 .w3-teal,.w3-hover-teal:hover{color:#fff!important;background-color:#009688!important}
 /* .w3-button{border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap} */
