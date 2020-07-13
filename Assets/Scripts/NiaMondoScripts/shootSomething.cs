@@ -34,7 +34,6 @@ public class shootSomething : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        initialPos = transform.position.x;
         weaponController = GetComponent<PlayerWeaponController>();
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("arbo");
@@ -70,12 +69,22 @@ public class shootSomething : MonoBehaviour
     	if(weaponController.GetWeapon() != null){
     		hasWeapon = true;
     	}
+    }
 
     void ThrowSoap()
-    {    	
-        GameObject go = (GameObject)Instantiate(projectile, (Vector2)transform.position + offset * checkDirection(), Quaternion.identity);
-        go.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x, velocity.y);
+    {   
+    	int direction = Math.Sign(playerController.velocity.x);
+        	if(direction == 0){
+        		direction = lastDirection;
+        	}
+        #if UNITY_EDITOR
+        Debug.Log(direction);
+        Debug.Log(lastDirection);
+        #endif	 	
+        GameObject go = (GameObject)Instantiate(projectile, (Vector2)transform.position + offset * direction, Quaternion.identity);
+        go.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x*direction, velocity.y);
         StartCoroutine(CanShoot());
+        lastDirection = direction;
     }
 
 	void ThrowingSoapFinished(){
@@ -94,3 +103,4 @@ public class shootSomething : MonoBehaviour
     }
 
 }
+
