@@ -29,6 +29,7 @@ public class shootSomething : MonoBehaviour
 	private PlayerController playerController;
 
 	private int lastDirection = 1;
+	private int direction = 1;
 
 
     // Start is called before the first frame update
@@ -46,6 +47,8 @@ public class shootSomething : MonoBehaviour
     	if(!hasWeapon){
     		checkWeapon();
     	}
+
+    	updateDirection();
 
         if(hasWeapon && Input.GetKeyDown(KeyCode.T) && canShoot)
 		{
@@ -73,33 +76,24 @@ public class shootSomething : MonoBehaviour
 
     void ThrowSoap()
     {   
-    	int direction = Math.Sign(playerController.velocity.x);
-        	if(direction == 0){
-        		direction = lastDirection;
-        	}
-        #if UNITY_EDITOR
-        Debug.Log(direction);
-        Debug.Log(lastDirection);
-        #endif	 	
+    	
         GameObject go = (GameObject)Instantiate(projectile, (Vector2)transform.position + offset * direction, Quaternion.identity);
         go.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x*direction, velocity.y);
         StartCoroutine(CanShoot());
-        lastDirection = direction;
     }
 
 	void ThrowingSoapFinished(){
 		animator.SetBool("shootingSoap", false);
 	}
 
-    int getDirection()
+    void updateDirection()
     {
-        int direction = Math.Sign(playerController.velocity.x);
+        direction = Math.Sign(playerController.velocity.x);
         	if(direction == 0){
         		direction = lastDirection;
         	}
 		lastDirection = direction;
 
-    	return direction;
     }
 
 }
