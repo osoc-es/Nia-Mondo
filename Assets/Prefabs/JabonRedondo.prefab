@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 3219931113295667615}
   - component: {fileID: 7704012012429568160}
   - component: {fileID: 5025614322112346920}
+  - component: {fileID: 6785352440996493193}
   m_Layer: 0
-  m_Name: Jabon redondo 1
+  m_Name: JabonRedondo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,3 +121,15 @@ CircleCollider2D:
   m_Offset: {x: -0.43270406, y: -0.0000011527286}
   serializedVersion: 2
   m_Radius: 3.5287323
+--- !u!114 &6785352440996493193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2640490726175768540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59da8044c12805147ab8109f779e54a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
