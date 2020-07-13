@@ -15,7 +15,11 @@ public class shootSomething : MonoBehaviour
 	//private float cooldown = 1f;
 
 
-	public Transform weaponHolder;
+
+    public Transform weaponHolder;
+
+    private Animator animator;
+
 
 	private PlayerWeaponController weaponController;
 
@@ -24,16 +28,17 @@ public class shootSomething : MonoBehaviour
 	private GameObject player;
 	private PlayerController playerController;
 
-	private int lastDirection;
+	private int lastDirection = 1;
 
-   
-   
+
     // Start is called before the first frame update
     void Start()
     {
-		  weaponController = GetComponent<PlayerWeaponController>();
-		  player = GameObject.FindGameObjectWithTag("arbo");
-		  playerController = player.GetComponent<PlayerController>();
+        initialPos = transform.position.x;
+        weaponController = GetComponent<PlayerWeaponController>();
+        animator = GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("arbo");
+		playerController = player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -43,19 +48,12 @@ public class shootSomething : MonoBehaviour
     		checkWeapon();
     	}
 
-    	
-
         if(hasWeapon && Input.GetKeyDown(KeyCode.T) && canShoot)
 		{
-        	int direction = Math.Sign(playerController.velocity.x);
-        	if(direction == 0){
-        		direction = lastDirection;
-        	}
-        	GameObject go =  (GameObject)Instantiate(projectile, (Vector2)transform.position+offset*direction, Quaternion.identity);
-            go.GetComponent<Rigidbody2D> ().velocity = new Vector2 (velocity.x*direction, velocity.y);
-			StartCoroutine(CanShoot());
-			lastDirection = direction;
+        	ThrowSoap();
+			animator.SetBool("shootingSoap", true);
         }
+
 
     }
 
@@ -72,6 +70,27 @@ public class shootSomething : MonoBehaviour
     	if(weaponController.GetWeapon() != null){
     		hasWeapon = true;
     	}
+
+    void ThrowSoap()
+    {    	
+        GameObject go = (GameObject)Instantiate(projectile, (Vector2)transform.position + offset * checkDirection(), Quaternion.identity);
+        go.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x, velocity.y);
+        StartCoroutine(CanShoot());
+    }
+
+	void ThrowingSoapFinished(){
+		animator.SetBool("shootingSoap", false);
+	}
+
+    int getDirection()
+    {
+        int direction = Math.Sign(playerController.velocity.x);
+        	if(direction == 0){
+        		direction = lastDirection;
+        	}
+		lastDirection = direction;
+
+    	return direction;
     }
 
 }

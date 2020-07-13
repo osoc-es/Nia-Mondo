@@ -18,7 +18,7 @@ namespace Platformer.Mechanics
         public AudioClip respawnAudio;
         public AudioClip ouchAudio;
 
-
+        private bool isFacingRight = true;
 
         /// <summary>
         /// Max horizontal speed of the player.
@@ -129,10 +129,12 @@ namespace Platformer.Mechanics
             if (move.x > 0.01f){
                 //spriteRenderer.flipX = false;
                     rootBone.rotation = Quaternion.Euler(0,0,90);
+                    isFacingRight = true;
             }
             else if (move.x < -0.01f){
                 //spriteRenderer.flipX = true;
                     rootBone.rotation = Quaternion.Euler(0,180,90);
+                    isFacingRight = false;
                 }
                 
 
@@ -140,6 +142,10 @@ namespace Platformer.Mechanics
             animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
 
             targetVelocity = move * maxSpeed;
+        }
+
+        public bool IsFacingRight(){
+            return isFacingRight;
         }
 
         public enum JumpState
