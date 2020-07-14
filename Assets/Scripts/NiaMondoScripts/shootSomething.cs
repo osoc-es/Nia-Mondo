@@ -52,7 +52,7 @@ public class shootSomething : MonoBehaviour
 
         if(hasWeapon && Input.GetKeyDown(KeyCode.T) && canShoot)
 		{
-        	ThrowSoap();
+        	//ThrowSoap();
 			animator.SetBool("shootingSoap", true);
         }
 

@@ -8,6 +8,9 @@ public class SprayBullet : MonoBehaviour
     public  float velocity;
     private float incr;
 
+[HideInInspector]
+    public float damage;
+
     [HideInInspector]
     public float dir;
     // Start is called before the first frame update
@@ -29,4 +32,13 @@ public class SprayBullet : MonoBehaviour
         transform.Translate( velocity*transform.right * Time.deltaTime);
 
     }
+
+    void OnParticleCollision(GameObject other){
+        if (other.gameObject.TryGetComponent(out EnemyHealth enemyHealth))
+        {
+            enemyHealth.ReduceHealth(damage);
+            Destroy(this.gameObject);
+        }
+    }
+    
 }
