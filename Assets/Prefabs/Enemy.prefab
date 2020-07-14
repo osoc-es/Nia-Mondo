@@ -1,5 +1,97 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &595001590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 595001591}
+  m_Layer: 0
+  m_Name: bone_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &595001591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595001590}
+  m_LocalRotation: {x: 0, y: 0, z: 0.0013918158, w: 0.99999905}
+  m_LocalPosition: {x: 0.7293921, y: -0.00000015202478, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1847167580}
+  m_Father: {fileID: 1454368749}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1454368748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1454368749}
+  m_Layer: 0
+  m_Name: bone_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1454368749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454368748}
+  m_LocalRotation: {x: 0, y: 0, z: 0.72082806, w: 0.6931139}
+  m_LocalPosition: {x: -0.0071453857, y: -1.2290106, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 595001591}
+  m_Father: {fileID: 1658460978237467174}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1847167579
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1847167580}
+  m_Layer: 0
+  m_Name: bone_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1847167580
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847167579}
+  m_LocalRotation: {x: 0, y: 0, z: -0.03281362, w: 0.99946153}
+  m_LocalPosition: {x: 0.85105634, y: -0.000009497928, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 595001591}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1661912868639658944
 GameObject:
   m_ObjectHideFlags: 0
@@ -18,6 +110,7 @@ GameObject:
   - component: {fileID: 5843668731025413174}
   - component: {fileID: 1153390212}
   - component: {fileID: 3774556746532914029}
+  - component: {fileID: 1349211822}
   m_Layer: 13
   m_Name: Enemy
   m_TagString: Player
@@ -35,7 +128,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.508, y: 1.032, z: 1}
   m_LocalScale: {x: 0.5, y: 0.35, z: 0.35}
-  m_Children: []
+  m_Children:
+  - {fileID: 1454368749}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -315,3 +409,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 730203d981c62d74baebb569d655c95a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1349211822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661912868639658944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c008f954fe54a8bb972de1018a2cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RootBone: {fileID: 1454368749}
+  m_BoneTransforms:
+  - {fileID: 1454368749}
+  - {fileID: 595001591}
+  - {fileID: 1847167580}
+  m_Bounds:
+    m_Center: {x: 0.0014449954, y: 0.0012149811, z: 0}
+    m_Extent: {x: 0.84855497, y: 1.298785, z: 0}
+  m_UseBatching: 1
+  m_AlwaysUpdate: 1
