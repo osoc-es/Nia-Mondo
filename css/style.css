@@ -136,7 +136,7 @@ article {
 
 /*FOOTER*/
 footer {
-	background-color: #a1c7eb;
+	background-color: #ebfaeb;
 	padding: 5px;
 	font-size: 12px;
 	color: black;
@@ -144,6 +144,8 @@ footer {
 	overflow:auto;
 	width:100%
 }
+
+
 
 
 
@@ -402,30 +404,6 @@ img.avatar {
   padding-bottom: 50px;
 }
 
-/*ARTICLE*/
-article {
-	flex:100%;
-	background-color: white;
-	text-align: justify;
-	padding: 2%;
-	border-radius:0px;
-	margin: 0px;
-}
-
-/*FOOTER*/
-footer {
-	background-color: #a1c7eb;
-	padding: 5px;
-	font-size: 12px;
-	color: black;
-	margin: 5px 0px 0px 0px;
-	overflow:auto;
-	width:100%
-}
-
-
-
-
 /*Setting header options horizontal menu*/
 ul#reglog {
     list-style-type: none;
@@ -507,14 +485,14 @@ h1{
 	font-family: PT Sans Narrow;
 	font-size: 300%;
 	margin:4% 1% 0% 0%;
-  font-weight: 1000;
-  margin-top: 10px;
+  font-weight: 500;
+  margin-top: 70px;
   padding-top: 0px;
   padding-bottom: 30px;
 
 }
-#primer {
-  /* margin-top: 10px; */
+#primer{
+  margin-top: 10px;
 }
 
 h2 {
@@ -526,6 +504,7 @@ h2 {
 p {
   text-align:justify;
   font-size: 120%;
+  line-height: 1.9;
 }
 #espacioUp{
   margin-top: 100px;
@@ -548,8 +527,8 @@ div.objColRight{
 }
 
 .logoObj{
-  width: 55%;
-  height: 55%;
+  width: 70%;
+  height: 70%;
 }
 
 .zoom {
@@ -587,6 +566,8 @@ a:hover {
 a:active {
   color: #698b4f;
 }
+
+
 
 /*  ----------------------------------------------MODALES  ---------------------------------------------- */
 .w3-container,.w3-panel{padding:0.01em 16px}.w3-panel{margin-top:16px;margin-bottom:16px}
@@ -647,13 +628,38 @@ a:active {
   margin: 10px;
 }
 
+#desarrollado{
+  font-size: 150%;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+#foot{
+  /* float:right; */
+  width: 150px;
+  height: 150px;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
 #centrar{
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 120%;
 }
-.w3-teal,.w3-hover-teal:hover{color:#fff!important;background-color:#009688!important}
+.w3-teal,.w3-hover-teal:hover{
+  color:#fff!important;
+  background-color:#196619!important
+}
 /* .w3-button{border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap} */
 .w3-container:after,.w3-container:before,.w3-panel:after,.w3-panel:before,.w3-row:after,.w3-row:before,.w3-row-padding:after,.w3-row-padding:before,
 .w3-container,.w3-panel{padding:0.01em 16px}.w3-panel{margin-top:16px;margin-bottom:16px}
+
+/*  ---------------------------------------------- Agradecimientos  ---------------------------------------------- */
+
+.agr {
+  height: 15%;
+  width: 15%;
+  margin-right: 50px;
+}
