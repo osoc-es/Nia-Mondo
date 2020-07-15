@@ -222,66 +222,6 @@ ul#navigation {
 }
 
 
-
-.signupButton {
-  float: right;
-  width: 49%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  border-radius: 10px;
-  font-family: Comfortaa;
-  font-size: 14px;
-}
-
-.loginButton {
-  float: centered;
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  border-radius: 10px;
-  font-family: Comfortaa;
-  font-size: 14px;
-}
-
-.cancelButton {
-    padding: 14px 20px;
-    background-color: #f44336;
-    float: left;
-    width: 49%;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    opacity: 0.8;
-    border-radius: 10px;
-    font-family: Comfortaa;
-    font-size: 14px;
-}
-
-
-/*Sets the color and font for the form input hint*/
-input{
-	color: black;
-	font-family: Comfortaa;
-	/*width:100%;*/
-	font-size:15px;
-  background: #f1f1f1;
-  margin: 5px 0 22px 0;
-  padding: 6px;
-  border:1px solid #c0c2c4;
-}
-
 .format {
     background-color: #fefefe;
     border: 1px solid #888;
