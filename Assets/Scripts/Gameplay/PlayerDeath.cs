@@ -17,8 +17,14 @@ namespace Platformer.Gameplay
         public override void Execute()
         {
             var player = model.player;
-            if (player.health.IsAlive)
-            {
+            #if UNITY_EDITOR
+            Debug.Log(player.health.IsAlive);
+            #endif
+            //if (player.health.IsAlive)
+            //{
+                #if UNITY_EDITOR
+                Debug.Log("PlayerDeath");
+                #endif
                 player.health.Die();
                 model.virtualCamera.m_Follow = null;
                 model.virtualCamera.m_LookAt = null;
@@ -30,7 +36,7 @@ namespace Platformer.Gameplay
                 player.animator.SetTrigger("hurt");
                 player.animator.SetBool("dead", true);
                 Simulation.Schedule<PlayerSpawn>(2);
-            }
+            //}
         }
     }
 }

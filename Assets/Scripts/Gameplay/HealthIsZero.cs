@@ -1,6 +1,8 @@
 using Platformer.Core;
 using Platformer.Mechanics;
 using static Platformer.Core.Simulation;
+using UnityEngine;
+
 
 namespace Platformer.Gameplay
 {
@@ -15,6 +17,9 @@ namespace Platformer.Gameplay
 
         public override void Execute()
         {
+            #if UNITY_EDITOR
+            Debug.Log("HealthIsZero");
+            #endif
             Schedule<PlayerDeath>();
         }
     }

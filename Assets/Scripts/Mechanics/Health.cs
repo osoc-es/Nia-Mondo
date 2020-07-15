@@ -41,6 +41,11 @@ namespace Platformer.Mechanics
             HealthBar.SetHealth(currentHP);
         }
 
+        public void SetMaxHP(){
+        	currentHP = maxHP;
+        	HealthBar.SetMaxHealth(currentHP);
+        }
+
         /// <summary>
         /// Decrement the HP of the entity. Will trigger a HealthIsZero event when
         /// current HP reaches 0.
@@ -49,9 +54,15 @@ namespace Platformer.Mechanics
         {
             currentHP = Mathf.Clamp(currentHP - 1, 0, maxHP);
             HealthBar.SetHealth(currentHP);
-
+			#if UNITY_EDITOR
+			 	Debug.Log("isAlive: " + IsAlive );
+			#endif
             if (currentHP == 0)
             {
+            	#if UNITY_EDITOR
+			 	Debug.Log("Current HP is 0: " + currentHP);
+			 	Debug.Log("this: " + this);
+				#endif
                 var ev = Schedule<HealthIsZero>();
                 ev.health = this;
             }

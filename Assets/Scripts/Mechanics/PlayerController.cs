@@ -88,14 +88,7 @@ namespace Platformer.Mechanics
             var playerHealth = this.GetComponent<Health>();
             if(playerHealth != null){
                 playerHealth.Decrement();
-                if (!playerHealth.IsAlive)
-                {
-                    Schedule<PlayerDeath>();
-                }
-            }
-            else
-            {
-                Schedule<PlayerDeath>();
+                
             }
         }
         
