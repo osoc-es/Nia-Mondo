@@ -23,7 +23,7 @@ public class WeaponSelector : MonoBehaviour
     public ScriptableWeapons goodWeapon;
 
     private ScriptableWeapons currentWeapon;
-
+    private Platformer.Mechanics.PlayerController playerController;
     public GameObject player;
 
     private void Start()
@@ -35,9 +35,7 @@ public class WeaponSelector : MonoBehaviour
         badWeaponButton.onClick.AddListener(BadWeaponSelected);
         goodWeaponButton.onClick.AddListener(GoodWeaponSelected);
 
-        player = GameObject.FindGameObjectWithTag("arbo");
-
-
+        playerController= player.GetComponent<Platformer.Mechanics.PlayerController>();
     }
 
     //When the player triggers the point the time is stopped and the panel shows up
@@ -48,7 +46,8 @@ public class WeaponSelector : MonoBehaviour
         Debug.Log("Weapon Selector triggered");
 #endif
 
-        Time.timeScale = 0.0f;
+        //Time.timeScale = 0.0f;
+        playerController.controlEnabled = false;
         selectorCanvas.SetActive(true);
     }
 
@@ -69,7 +68,9 @@ public class WeaponSelector : MonoBehaviour
     private void SelectionConfirmed()
     {
         selectorCanvas.SetActive(false);
-        Time.timeScale = 1.0f;
+                playerController.controlEnabled = true;
+
+       // Time.timeScale = 1.0f;
         if (!player.TryGetComponent(out PlayerWeaponController playerWeaponCon))
             Debug.LogError("No se encuentra el componente PLAYERWEAPONCONTROLLER", this);
         else playerWeaponCon.SetWeapon(currentWeapon);

@@ -20,12 +20,11 @@ public class DialogueTrigger : MonoBehaviour
     public void TriggerDialogue()
     {
 
-        playerController.enabled = false;
+        playerController.controlEnabled = false;
         //TODO: seguramente habra que desactivar los disparos tambien
-
-        if (playerWeaponController.GetWeapon().name == "Espray")
+        if (playerWeaponController.GetWeapon().weaponName == "Espray")
             dialogueManager.StartDialogue(badWeaponDialogue);
-		else if(playerWeaponController.GetWeapon().name == "Jabón")
+		else if(playerWeaponController.GetWeapon().weaponName == "Jabón")
 			dialogueManager.StartDialogue(goodWeaponDialogue);
     }
 

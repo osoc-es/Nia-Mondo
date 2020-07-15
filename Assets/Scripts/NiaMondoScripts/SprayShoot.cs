@@ -34,39 +34,42 @@ public class SprayShoot : MonoBehaviour
 
     public void Update()
     {
-        Debug.Log(sprayDuration);
-
-        if (playerWeaponController.HasWeapon() && sprayDuration>0)
+        if (playerController.controlEnabled)
         {
-            if (canShoot && Input.GetKey(KeyCode.T))
+
+            if (playerWeaponController.HasWeapon() && sprayDuration > 0)
             {
-
-                if (playerController.IsFacingRight())
+                if (canShoot && Input.GetKey(KeyCode.T))
                 {
-                    playerDir.y = 0;
-                    dir = 1;
-                }
-                else
-                {
-                    playerDir.y = 180;
-                    dir = -1;
-                }
-                SprayBullet sprayBullet = Instantiate(sprayParticles, sprayPosition.position, Quaternion.Euler(playerDir)).GetComponent<SprayBullet>();
 
-                sprayBullet.velocity = playerController.velocity.x;
-                sprayBullet.dir = dir;
-                sprayBullet.damage = sprayScriptable.damage;
-                sprayDuration-=20;
-                if(sprayDuration<= 0 && !rechargingSpray)
-                   {
-                       rechargingSpray = true;
+                    if (playerController.IsFacingRight())
+                    {
+                        playerDir.y = 0;
+                        dir = 1;
+                    }
+                    else
+                    {
+                        playerDir.y = 180;
+                        dir = -1;
+                    }
+                    SprayBullet sprayBullet = Instantiate(sprayParticles, sprayPosition.position, Quaternion.Euler(playerDir)).GetComponent<SprayBullet>();
+
+                    sprayBullet.velocity = playerController.velocity.x;
+                    sprayBullet.dir = dir;
+                    sprayBullet.damage = sprayScriptable.damage;
+                    sprayDuration -= 20;
+                    if (sprayDuration <= 0 && !rechargingSpray)
+                    {
+                        rechargingSpray = true;
                         StartCoroutine(RechargeSpray());
-                   }
+                    }
+                }
             }
         }
     }
 
-    IEnumerator RechargeSpray(){
+    IEnumerator RechargeSpray()
+    {
         yield return new WaitForSeconds(sprayScriptable.cooldown);
         sprayDuration = 100;
         rechargingSpray = false;

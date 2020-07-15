@@ -22,6 +22,7 @@ public class DialogueManager : MonoBehaviour {
 
 	public void StartDialogue (Dialogue dialogue)
 	{
+		Debug.Log("empezar dialogo");
 		dialogCanvas.SetActive(true);
 		animator.SetBool("IsOpen", true);
 
@@ -60,10 +61,16 @@ public class DialogueManager : MonoBehaviour {
 		}
 	}
 
+	public void ConfirmWeaponSelection(){
+		animator.SetBool("IsOpen", false);
+		dialogCanvas.SetActive(false);
+	}
 	void EndDialogue()
 	{
 		animator.SetBool("IsOpen", false);
 		dialogCanvas.SetActive(false);
+		
+		//Aqui habría que hacer la animación de que te ataca el pez, quitarte la vida y luego pasar a los créditos
 		levelLoader.LoadNextLevel();
 	}
 

@@ -50,7 +50,8 @@ public class shootSomething : MonoBehaviour
 
     	updateDirection();
 
-        if(hasWeapon && Input.GetKeyDown(KeyCode.T) && canShoot)
+
+        if(playerController.controlEnabled && hasWeapon && Input.GetKeyDown(KeyCode.T) && canShoot)
 		{
         	//ThrowSoap();
 			animator.SetBool("shootingSoap", true);
