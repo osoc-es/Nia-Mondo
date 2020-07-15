@@ -627,9 +627,14 @@ a:active {
 
 #iFrame1 {
   border:0px #000000 none;
-  height:1200px;
-  width:1920px;
+  height:900px;
+  width:1035px;
   float: left;
   margin: 0;
   padding:0;
+}
+
+#izq {
+  float: left;
+  
 }
