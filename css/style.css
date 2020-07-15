@@ -689,4 +689,7 @@ a:active {
   border:0px #000000 none;
   height:1200px;
   width:1920px;
+  float: left;
+  margin: 0;
+  padding:0;
 }
