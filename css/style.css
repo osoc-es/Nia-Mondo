@@ -44,6 +44,7 @@ header{
 	border-radius: 0px;
 	overflow:auto;
 	padding: 0px;
+  margin-top: 0px;
 	/*Añadido, no tengo claro por que?*/
 	size:100%;
   width: 100%; /* Para que se quede fixed*/
@@ -636,5 +637,7 @@ a:active {
 
 #izq {
   float: left;
+  margin-left: 0px;
+  padding-left: 0px;
 
 }
