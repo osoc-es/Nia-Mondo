@@ -627,8 +627,8 @@ a:active {
 
 #iFrame1 {
   border:0px #000000 none;
-  height:900px;
-  width:1035px;
+  height:600px;
+  width:960px;
   float: left;
   margin: 0;
   padding:0;
@@ -636,5 +636,5 @@ a:active {
 
 #izq {
   float: left;
-  
+
 }
