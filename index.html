@@ -5,11 +5,32 @@
 	<title>NIA MONDO</title>
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="shortcut icon" href="TemplateData/favicon.ico">
-	<script src="TemplateData/UnityProgress.js"></script>
+	<!-- <script src="TemplateData/UnityProgress.js"></script>
 	<script src="Build/UnityLoader.js"></script>
 	<script>
 		var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Build.json", {onProgress: UnityProgress});
-	</script>
+	</script> -->
+	<script type="application/javascript">
+
+function resizeIFrameToFitContent( iFrame ) {
+
+    iFrame.width  = iFrame.contentWindow.document.body.scrollWidth;
+    iFrame.height = iFrame.contentWindow.document.body.scrollHeight;
+}
+
+window.addEventListener('DOMContentLoaded', function(e) {
+
+    var iFrame = document.getElementById( 'iFrame1' );
+    resizeIFrameToFitContent( iFrame );
+
+    // or, to resize all iframes:
+    var iframes = document.querySelectorAll("iframe");
+    for( var i = 0; i < iframes.length; i++) {
+        resizeIFrameToFitContent( iframes[i] );
+    }
+} );
+
+</script>
 	<meta charset="UTF-8">
 </head>
 
@@ -185,7 +206,9 @@
       </div>
     </div> -->
 
-			<iframe src="https://saratimermans.github.io/prueba/" name="Nia Mondo" height="1000px" width="1000px"></iframe>
+			<!-- <iframe src="https://saratimermans.github.io/prueba/" name="Nia Mondo" height="1000px" width="1000px"></iframe> -->
+			<iframe src="https://saratimermans.github.io/prueba/" id="iFrame1"></iframe>
+
 			<!-- <iframe src="https://saratimermans.github.io/prueba/" style="border:0px #000000 none;" name="Nia Mondo" height="600px" width="960px"></iframe> -->
 
 		<h2 id="desarrollado">
