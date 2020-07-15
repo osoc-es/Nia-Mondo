@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<title>NIA MONDO</title>
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="shortcut icon" href="img/logo.png">
+	<link rel="shortcut icon" href="TemplateData/favicon.ico">
+	<!-- <script src="TemplateData/UnityProgress.js"></script>
+	<script src="Build/UnityLoader.js"></script>
+	<script>
+		var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Build.json", {onProgress: UnityProgress});
+	</script> -->
+	<!-- <script type="application/javascript">
+function resizeIFrameToFitContent( iFrame ) {
+    iFrame.width  = iFrame.contentWindow.document.body.scrollWidth;
+    iFrame.height = iFrame.contentWindow.document.body.scrollHeight;
+}
+window.addEventListener('DOMContentLoaded', function(e) {
+    var iFrame = document.getElementById( 'iFrame1' );
+    resizeIFrameToFitContent( iFrame );
+    // or, to resize all iframes:
+    var iframes = document.querySelectorAll("iframe");
+    for( var i = 0; i < iframes.length; i++) {
+        resizeIFrameToFitContent( iframes[i] );
+    }
+} );
+</script> -->
 	<meta charset="UTF-8">
 </head>
-
 <body>
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HEADER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<header>
 		<div class="col-7 col-s-12">
 			<a href="index.html"> <img src="img/logo.png" alt="Logo Nia Mondo" id="logo"></a>
 		</div>
-
 		<div class="col-5 col-s-12">
 			<ul id="reglog">
 				<li id="menu"> <a href="#inicio"> Inicio </a> </li>
@@ -22,15 +39,10 @@
         <li id="menu"> <a href="#team">Equipo</a> </li>
 			</ul>
 		</div>
-
 	</header>
-
 	<!-- ______________________________________ AQUI EMPIEZA SECCION INICIO ______________________________________ -->
-
   <section id="inicio">
-
     <h1 id="primer"> Nia Mondo </h1>
-
 		<p>
 			Nia Mondo es un videojuego creado con el fin de concienciar a la población sobre el desarrollo sostenible
 			de acuerdo a la Agenda 2030 publicada por la ONU en 2015. De la mano del personaje principal, Arbo, podrás
@@ -43,7 +55,7 @@
 			<div class="objColLeft">
 				<p>
 				La Agenda 2030, propuesta por la ONU en 2015, trata de dar una oportunidad para que los países
-				y sus sociedades emprendan un nuevo camino con el que mejorar la vida de todos, sin dejar a nadie atrás. 
+				y sus sociedades emprendan un nuevo camino con el que mejorar la vida de todos, sin dejar a nadie atrás.
 				<br>
 				Los Objetivos de Desarrollo Sostenible son el plan maestro para conseguir un futuro sostenible para
 				todos. Se interrelacionan entre sí e incorporan los desafíos globales a los que nos enfrentamos día
@@ -60,9 +72,6 @@
 		<p>
 			A continuación mostramos los objetivos que este proyecto aborda y su finalidad:
 		</p>
-
-
-
 		<!-- OBJETIVO 3 -->
 		<span id="centrar">
 		<img src="img/objetivos/obj3.png" onclick="document.getElementById('obj3').style.display='block'" class="objSize objetivos w3-black zoom" alt="Objetivo 3">
@@ -81,9 +90,7 @@
 			    </div>
 			  </div>
 			</div>
-
 			<!-- OBJETIVO 11 -->
-
 			<img src="img/objetivos/obj11.png" onclick="document.getElementById('obj11').style.display='block'" class="objSize objetivos w3-black zoom" alt="Objetivo 11">
 				<div id="obj11" class="w3-modal">
 				  <div class="w3-modal-content">
@@ -97,7 +104,6 @@
 				    </div>
 				  </div>
 				</div>
-
 				<!-- OBJETIVO 12 -->
 				<img src="img/objetivos/obj12.png" onclick="document.getElementById('obj12').style.display='block'" class="objSize objetivos w3-black zoom" alt="Objetivo 12">
 					<div id="obj12" class="w3-modal">
@@ -112,7 +118,6 @@
 							</div>
 						</div>
 					</div>
-
 				<!-- OBJETIVO 13 -->
 				<img src="img/objetivos/obj13.jpg" onclick="document.getElementById('obj13').style.display='block'" class="objSize objetivos w3-black zoom" alt="Objetivo 13">
 					<div id="obj13" class="w3-modal">
@@ -127,7 +132,6 @@
 					    </div>
 					  </div>
 					</div>
-
 					<!-- OBJETIVO 14 -->
 					<img src="img/objetivos/obj14.png" onclick="document.getElementById('obj14').style.display='block'" class="objSize objetivos w3-black zoom" alt="Objetivo 14">
 						<div id="obj14" class="w3-modal">
@@ -142,7 +146,6 @@
 						    </div>
 						  </div>
 						</div>
-
 					<!-- OBJETIVO 15 -->
 					<img src="img/objetivos/obj15.png" onclick="document.getElementById('obj15').style.display='block'" class="objSize objetivos w3-black zoom" alt="Objetivo 15">
 						<div id="obj15" class="w3-modal">
@@ -158,37 +161,30 @@
 						  </div>
 						</div>
 		</center>
-
-
   </section>
-
 	<!-- ______________________________________ AQUI EMPIEZA SECCION JUEGO ______________________________________ -->
-
 	<section id="juego">
-
     <h1> Juego </h1>
 		<br>
-
-
 			<!-- <iframe src="https://saratimermans.github.io/prueba/" name="Nia Mondo" height="1000px" width="1000px"></iframe> -->
 			<!-- <div id="izq"> -->
 			<center>
 				<iframe src="https://saratimermans.github.io/prueba/" id="iFrame1" scrolling="no"></iframe>
 			</center>
-		<!-- <br><br><br><br> -->
+			<!-- </div> -->
+			<!-- <iframe src="Source url (I'm using dropbox)" style="border:0px #000000 none;" name="Game name" scrolling="no" frameborder="1" marginheight="px" marginwidth="320px" height="320px" width="480px"></iframe> -->
+			<!-- <iframe src="https://saratimermans.github.io/prueba/" style="border:0px #000000 none;" name="Nia Mondo" height="600px" width="960px"></iframe> -->
+
+		<br><br>
 		<h2 id="desarrollado">
 			Desarrollado en el <a href="https://2020.summerofcode.es/" style="text-decoration:none"> Open Summer of Code	<img src="img/osoc-logo.png" alt="Logo Open Summer of Code" id="foot"> </a>
 		</h2>
-
   </section>
-
 	<!-- ______________________________________ AQUI EMPIEZA SECCION TEAM ______________________________________ -->
 	<section id="team">
     <h1 class="team"> El equipo </h1>
     <!-- <img src="img/equipo/foto_maria.jpg" alt="Maria Zuil" class="avatar">
     <img src="img/equipo/foto_sara.png" alt="Sara Timermans" class="avatar"> -->
-
-
   <div class="row">
     <div class="column">
       <img src="img/equipo/foto_maria.jpg" alt="María Zuil" class="avatar">
@@ -202,7 +198,6 @@
         <!-- <p><button class="button">Contact</button></p> -->
       </span>
     </div>
-
     <div class="column">
       <img src="img/equipo/foto_sara.png" alt="Sara Timermans" class="avatar">
       <span style="">
@@ -214,7 +209,6 @@
         </p>
       </span>
     </div>
-
     <div class="column">
       <img src="img/equipo/foto_sergio.jpg" alt="Sergio Gavilán" class="avatar" >
       <span style="">
@@ -226,7 +220,6 @@
         </p>
       </span>
     </div>
-
   <div class="column">
       <img src="img/equipo/foto_dani.jpg" alt="Daniel Vera" class="avatar">
       <span style="">
@@ -238,7 +231,6 @@
         </p>
       </span>
   </div>
-
   <div class="column">
       <img src="img/equipo/foto_eric.jpg" alt="Ericson Paredes" class="avatar">
       <span style="">
@@ -251,9 +243,6 @@
         <!-- <p><button class="button">Contact</button></p> -->
       </span>
 </div> <!-- End class row -->
-
-
-
     <h1 class="team"> Coach </h1>
   <div class="row">
     <div class="column">
@@ -269,7 +258,6 @@
     </div>
   </div>
   </section>
-
 	<section>
 		<h1> Agradecimientos </h1>
 		<a href="https://2020.summerofcode.es/" style="text-decoration:none"><img src="img/osoc-logo.png" alt="Logo osoc" class="agr"></a>
@@ -277,9 +265,5 @@
 		<a href="https://upm.es/" style="text-decoration:none"><img src="img/agradecimientos/upm.png" alt="Logo UPM" class="agr"></a>
 		<a href="http://madrid.theodi.org/" style="text-decoration:none"><img src="img/agradecimientos/odi.png" alt="Logo odi" class="agr"></a>
 		<a href="http://www.itd.upm.es/" style="text-decoration:none"><img src="img/agradecimientos/itd.png" alt="Logo itd" class="agr"></a>
-	</section>
-
-
 </body>
-
 </html>
