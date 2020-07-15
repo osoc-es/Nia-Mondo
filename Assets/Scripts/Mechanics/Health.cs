@@ -22,12 +22,28 @@ namespace Platformer.Mechanics
 
         int currentHP;
 
+        public HealthBar HealthBar;
+
+        void Start(){
+        	currentHP = maxHP;
+        	#if UNITY_EDITOR
+			 Debug.Log(HealthBar);
+			#endif
+        	HealthBar.SetMaxHealth(maxHP);
+        }
+
         /// <summary>
         /// Increment the HP of the entity.
         /// </summary>
         public void Increment()
         {
             currentHP = Mathf.Clamp(currentHP + 1, 0, maxHP);
+            HealthBar.SetHealth(currentHP);
+        }
+
+        public void SetMaxHP(){
+        	currentHP = maxHP;
+        	HealthBar.SetMaxHealth(currentHP);
         }
 
         /// <summary>
@@ -37,8 +53,16 @@ namespace Platformer.Mechanics
         public void Decrement()
         {
             currentHP = Mathf.Clamp(currentHP - 1, 0, maxHP);
+            HealthBar.SetHealth(currentHP);
+			#if UNITY_EDITOR
+			 	Debug.Log("isAlive: " + IsAlive );
+			#endif
             if (currentHP == 0)
             {
+            	#if UNITY_EDITOR
+			 	Debug.Log("Current HP is 0: " + currentHP);
+			 	Debug.Log("this: " + this);
+				#endif
                 var ev = Schedule<HealthIsZero>();
                 ev.health = this;
             }

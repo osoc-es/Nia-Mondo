@@ -8,6 +8,9 @@ public class SprayBullet : MonoBehaviour
     public  float velocity;
     private float incr;
 
+    public float lifeTime = 2f;
+    private float lifeTimeStart = 0f;
+
 [HideInInspector]
     public float damage;
 
@@ -30,7 +33,9 @@ public class SprayBullet : MonoBehaviour
         incr = 2;
        // transform.Translate(new Vector2((velocity+incr)*dir, 0) *Time.deltaTime );
         transform.Translate( velocity*transform.right * Time.deltaTime);
-
+        lifeTimeStart += Time.deltaTime;
+        if(lifeTimeStart>= lifeTime)
+            Destroy(this.gameObject);
     }
 
     void OnParticleCollision(GameObject other){
@@ -38,7 +43,9 @@ public class SprayBullet : MonoBehaviour
         {
             enemyHealth.ReduceHealth(damage);
             Destroy(this.gameObject);
+           
         }
+        
     }
     
 }

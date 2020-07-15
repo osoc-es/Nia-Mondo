@@ -540,6 +540,7 @@ PlayerSettings:
   webGLWasmStreaming: 0
   scriptingDefineSymbols:
     1: UNITY_TEMPLATE_PLATFORMER
+    13: UNITY_TEMPLATE_PLATFORMER
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}
