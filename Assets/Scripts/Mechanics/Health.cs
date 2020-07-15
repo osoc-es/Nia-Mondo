@@ -22,12 +22,23 @@ namespace Platformer.Mechanics
 
         int currentHP;
 
+        public HealthBar HealthBar;
+
+        void Start(){
+        	currentHP = maxHP;
+        	#if UNITY_EDITOR
+			 Debug.Log(HealthBar);
+			#endif
+        	HealthBar.SetMaxHealth(maxHP);
+        }
+
         /// <summary>
         /// Increment the HP of the entity.
         /// </summary>
         public void Increment()
         {
             currentHP = Mathf.Clamp(currentHP + 1, 0, maxHP);
+            HealthBar.SetHealth(currentHP);
         }
 
         /// <summary>
@@ -37,6 +48,8 @@ namespace Platformer.Mechanics
         public void Decrement()
         {
             currentHP = Mathf.Clamp(currentHP - 1, 0, maxHP);
+            HealthBar.SetHealth(currentHP);
+
             if (currentHP == 0)
             {
                 var ev = Schedule<HealthIsZero>();

@@ -68,6 +68,10 @@ namespace Platformer.Mechanics
                     stopJump = true;
                     Schedule<PlayerStopJump>().player = this;
                 }
+
+                if(Input.GetKeyDown(KeyCode.F)){
+                    TakeDamage(20);
+                }
             }
             else
             {
@@ -79,6 +83,22 @@ namespace Platformer.Mechanics
             UpdateJumpState();
             base.Update();
         }
+
+        void TakeDamage(int damage){
+            var playerHealth = this.GetComponent<Health>();
+            if(playerHealth != null){
+                playerHealth.Decrement();
+                if (!playerHealth.IsAlive)
+                {
+                    Schedule<PlayerDeath>();
+                }
+            }
+            else
+            {
+                Schedule<PlayerDeath>();
+            }
+        }
+        
 
         void UpdateJumpState()
         {
