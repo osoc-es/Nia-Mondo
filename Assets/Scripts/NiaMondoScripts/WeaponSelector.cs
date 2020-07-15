@@ -14,7 +14,8 @@ public class WeaponSelector : MonoBehaviour
     public Button confirmButton;
 
     public TMP_Text selectionText;
-
+    public Image hoverGoodWeapon;
+    public Image hoverBadWeapon;
 
     [Space]
     [Header("Bad and good weapon")]
@@ -27,6 +28,7 @@ public class WeaponSelector : MonoBehaviour
 
     private void Start()
     {
+        disableHover();
         selectorCanvas.SetActive(false);
         confirmButton.onClick.AddListener(SelectionConfirmed);
 
@@ -52,13 +54,15 @@ public class WeaponSelector : MonoBehaviour
 
     private void BadWeaponSelected()
     {
-        SetSelectionText(badWeapon.weaponName);
+        disableHover();
+        SetHover(hoverBadWeapon);
         currentWeapon = badWeapon;
 
     }
     private void GoodWeaponSelected()
     {
-        SetSelectionText(goodWeapon.weaponName);
+        disableHover();
+        SetHover(hoverGoodWeapon);
         currentWeapon = goodWeapon;
     }
 
@@ -79,9 +83,14 @@ public class WeaponSelector : MonoBehaviour
 
     }
 
-    private void SetSelectionText(string weaponName)
+    private void SetHover(Image hover)
     {
-        selectionText.SetText("Has seleccionado como arma:\n" + weaponName);
+        hover.enabled = true;
+    }
+
+    private void disableHover(){
+        hoverGoodWeapon.enabled = false;
+        hoverBadWeapon.enabled = false;
     }
 
 }
