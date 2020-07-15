@@ -7,18 +7,20 @@ public class DialogueManager : MonoBehaviour {
 
 	public Text nameText;
 	public Text dialogueText;
-
+	public GameObject dialogCanvas;
 	public Animator animator;
 
 	private Queue<string> sentences;
 
 	// Use this for initialization
 	void Start () {
+		dialogCanvas.SetActive(false);
 		sentences = new Queue<string>();
 	}
 
 	public void StartDialogue (Dialogue dialogue)
 	{
+		dialogCanvas.SetActive(true);
 		animator.SetBool("IsOpen", true);
 
 		nameText.text = dialogue.name;
@@ -59,6 +61,7 @@ public class DialogueManager : MonoBehaviour {
 	void EndDialogue()
 	{
 		animator.SetBool("IsOpen", false);
+		dialogCanvas.SetActive(false);
 	}
 
 }
