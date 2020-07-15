@@ -2,24 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueTrigger : MonoBehaviour {
+public class DialogueTrigger : MonoBehaviour
+{
 
-	public Dialogue dialogue;
-	
+    public Dialogue badWeaponDialogue;
+	public Dialogue goodWeaponDialogue;
 
+    public Platformer.Mechanics.PlayerController playerController;
+    private PlayerWeaponController playerWeaponController;
+    private DialogueManager dialogueManager;
 
-	public void TriggerDialogue ()
-	{
-
-		FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-	}
-
-	private void OnTriggerEnter2D(Collider2D col)
+    private void Start()
+    {
+        dialogueManager = FindObjectOfType<DialogueManager>();
+        playerWeaponController = playerController.gameObject.GetComponent<PlayerWeaponController>();
+    }
+    public void TriggerDialogue()
     {
 
-	#if UNITY_EDITOR
-	        Debug.Log("Dialog triggered");
-	#endif
+        playerController.enabled = false;
+        //TODO: seguramente habra que desactivar los disparos tambien
+
+        if (playerWeaponController.GetWeapon().name == "Espray")
+            dialogueManager.StartDialogue(badWeaponDialogue);
+		else if(playerWeaponController.GetWeapon().name == "Jabón")
+			dialogueManager.StartDialogue(goodWeaponDialogue);
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+
+#if UNITY_EDITOR
+        Debug.Log("Dialog triggered");
+#endif
 
         TriggerDialogue();
     }

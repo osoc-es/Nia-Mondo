@@ -10,6 +10,8 @@ public class DialogueManager : MonoBehaviour {
 	public GameObject dialogCanvas;
 	public Animator animator;
 
+	public LevelLoader levelLoader;
+
 	private Queue<string> sentences;
 
 	// Use this for initialization
@@ -62,6 +64,7 @@ public class DialogueManager : MonoBehaviour {
 	{
 		animator.SetBool("IsOpen", false);
 		dialogCanvas.SetActive(false);
+		levelLoader.LoadNextLevel();
 	}
 
 }
