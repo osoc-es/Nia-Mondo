@@ -4,6 +4,13 @@
 <head>
 	<title>NIA MONDO</title>
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="shortcut icon" href="Build/TemplateData/favicon.ico">
+	<link rel="stylesheet" href="Build/TemplateData/style.css">
+	<script src="Build/TemplateData/UnityProgress.js"></script>
+	<script src="Build/Build/UnityLoader.js"></script>
+	<script>
+		var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Build.json", {onProgress: UnityProgress});
+	</script>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="script/javascript/javascr.js"></script>
@@ -180,8 +187,15 @@
 
     <h1> Juego </h1>
 		<br>
-		<p> Aqui va el juego
-		</p>
+
+		<div class="webgl-content">
+      <div id="unityContainer" style="width: 960px; height: 600px"></div>
+      <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+        <div class="title">Nia Mondo</div>
+      </div>
+    </div>
 
 		<h2 id="desarrollado">
 			Desarrollado en el <a href="https://2020.summerofcode.es/" style="text-decoration:none"> Open Summer of Code	<img src="img/osoc-logo.png" alt="Logo Open Summer of Code" id="foot"> </a>
