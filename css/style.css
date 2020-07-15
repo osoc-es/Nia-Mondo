@@ -609,8 +609,8 @@ a:active {
 
 #iFrame1 {
   border:0px #000000 none;
-  height:600px;
-  width:960px;
+  /* height:600px;
+  width:960px; */
   float: left;
   margin: 0;
   padding:0;
