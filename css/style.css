@@ -31,7 +31,6 @@ footer, header, hgroup, menu, nav, section {
   padding:5px;
   padding-left: 100px;
   margin:0px;
-  padding-top: 40px;
 }
 
 /* ---------------------------------- MAIN PARTS OF LAYOUT ---------------------------------- */
@@ -52,6 +51,7 @@ header{
   position: fixed;
   margin-top: 0;
   margin: 0;
+  overflow:auto;
 
 }
 
