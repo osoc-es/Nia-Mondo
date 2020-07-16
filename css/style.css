@@ -50,7 +50,7 @@ header{
   width: 100%; /* Para que se quede fixed*/
   position: fixed;
   margin: 0;
-  margin-top: -8px;
+  margin-top: -9px;
   overflow:auto;
 
 
@@ -83,6 +83,26 @@ body{
 
 
 /* ------------------------------------------------------ PARA LAS FOTOS DE EQUIPO ------------------------------------------------------ */
+#foti{
+  float: left;
+  width: 60%;
+
+}
+
+#logo2 {
+	float: left;
+	width: 400px;
+	height: 400px;
+  padding:5px;
+  padding-left: 0px;
+}
+
+#desc {
+  float: left;
+  width: 30%;
+}
+
+
 img.avatar {
   height: 75%;
   width: 75%;
