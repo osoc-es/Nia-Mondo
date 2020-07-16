@@ -35,4 +35,12 @@ public class LevelLoader : MonoBehaviour
 
         SceneManager.LoadScene(levelIndex);
     }
+
+    public void LoadControls(){
+         StartCoroutine(LoadLevel(3));
+    }
+
+    public void BackToMenu(){
+        StartCoroutine(LoadLevel(0));
+    }
 }
