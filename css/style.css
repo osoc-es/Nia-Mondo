@@ -85,21 +85,21 @@ body{
 /* ------------------------------------------------------ PARA LAS FOTOS DE EQUIPO ------------------------------------------------------ */
 #foti{
   float: left;
-  width: 60%;
+  width: 30%;
 
 }
 
 #logo2 {
 	float: left;
-	width: 200px;
-	height: 200px;
+	width: 150px;
+	height: 250px;
   padding:5px;
   padding-left: 0px;
 }
 
 #desc {
   float: left;
-  width: 30%;
+  width: 60%;
 }
 
 
