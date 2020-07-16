@@ -50,7 +50,7 @@ header{
   width: 100%; /* Para que se quede fixed*/
   position: fixed;
   margin: 0;
-  margin-top: -5px;
+  margin-top: -2px;
   overflow:auto;
 
 
@@ -610,6 +610,7 @@ a:active {
 
 #decer{
   width:100%;
+  size:100%;
 }
 
 /*  ---------------------------------------------- CSS PARA UNITY  ---------------------------------------------- */
