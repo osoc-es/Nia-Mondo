@@ -20,10 +20,15 @@ namespace Platformer.Mechanics
         /// </summary>
         public bool IsAlive => currentHP > 0;
 
-        int currentHP;
+         int currentHP;
 
         public HealthBar HealthBar;
 
+
+        public void FishAtack(){
+                currentHP /=2; 
+                HealthBar.SetHealth(currentHP);
+        }
         void Start(){
         	currentHP = maxHP;
         	#if UNITY_EDITOR
