@@ -326,9 +326,9 @@ img.avatar {
   align-items:center;
 }
 
-.hola {
+.patri {
   text-align: center;
-
+  width: 100%;
 }
 
 .row{
@@ -608,6 +608,7 @@ a:active {
   width: 15%;
   margin-right: 50px;
 }
+
 #decer{
   width:100%;
 }
