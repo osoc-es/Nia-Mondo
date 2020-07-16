@@ -7,10 +7,12 @@ public class DialogueTrigger : MonoBehaviour
 
     public Dialogue badWeaponDialogue;
 	public Dialogue goodWeaponDialogue;
-
+    
     public Platformer.Mechanics.PlayerController playerController;
     private PlayerWeaponController playerWeaponController;
     private DialogueManager dialogueManager;
+
+    public Animator pezAnimator;
 
     private void Start()
     {
@@ -23,9 +25,14 @@ public class DialogueTrigger : MonoBehaviour
         playerController.controlEnabled = false;
         //TODO: seguramente habra que desactivar los disparos tambien
         if (playerWeaponController.GetWeapon().weaponName == "Espray")
-            dialogueManager.StartDialogue(badWeaponDialogue);
+        {
+
+            //Aqui activamos la anim, la anim en el ultimo frame llamara a StartBadWeaponDialogue()
+             dialogueManager.StartDialogue(badWeaponDialogue,true);
+        }
+            
 		else if(playerWeaponController.GetWeapon().weaponName == "Jabón")
-			dialogueManager.StartDialogue(goodWeaponDialogue);
+			dialogueManager.StartDialogue(goodWeaponDialogue,false);
     }
 
     private void OnTriggerEnter2D(Collider2D col)
