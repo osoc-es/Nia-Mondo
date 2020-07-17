@@ -31,6 +31,9 @@ public class shootSomething : MonoBehaviour
 	private int lastDirection = 1;
 	private int direction = 1;
 
+	public AudioClip clip;
+	private AudioSource audioSource;
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +42,9 @@ public class shootSomething : MonoBehaviour
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("arbo");
 		playerController = player.GetComponent<PlayerController>();
+		
+		audioSource = GetComponent<AudioSource>();
+        audioSource.clip = clip;
     }
 
     // Update is called once per frame
@@ -55,6 +61,7 @@ public class shootSomething : MonoBehaviour
 		{
         	//ThrowSoap();
 			animator.SetBool("shootingSoap", true);
+			
         }
 
 
@@ -80,6 +87,7 @@ public class shootSomething : MonoBehaviour
     	
         GameObject go = (GameObject)Instantiate(projectile, (Vector2)transform.position + offset * direction, Quaternion.identity);
         go.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x*direction, velocity.y);
+		audioSource.Play();
         StartCoroutine(CanShoot());
     }
 

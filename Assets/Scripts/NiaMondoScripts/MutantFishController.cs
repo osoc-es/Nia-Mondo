@@ -9,10 +9,13 @@ public class MutantFishController : MonoBehaviour
 
     public Platformer.Mechanics.Health playerHealth;
 
+    public  AudioSource audioSource;
+
 
 
     public void Atack(){
-    
+        
+        audioSource.Play();
         StartCoroutine(removeHP());
 
     }
@@ -21,6 +24,7 @@ public class MutantFishController : MonoBehaviour
         //Aqui quitas vida
         //vida player %50
         playerHealth.FishAtack();
+
 
         yield return new WaitForSeconds(2f);
 

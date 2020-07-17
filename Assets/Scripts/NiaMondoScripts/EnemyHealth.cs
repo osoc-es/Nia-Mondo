@@ -7,13 +7,17 @@ public class EnemyHealth : MonoBehaviour
     public float health = 100f;
     private SpriteRenderer sp;
 
+    private AudioSource audioSource;
+
 
     void Start() {
         sp = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void ReduceHealth(float n)
     {
+        audioSource.Play();
         health -= n;
         if (health <= 0f)
             Die();
@@ -46,7 +50,8 @@ public class EnemyHealth : MonoBehaviour
 
     public void Die()
     {
-        Destroy(gameObject);
+        
+        Destroy(gameObject,0.5f);
     }
 
 }

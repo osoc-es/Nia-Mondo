@@ -23,6 +23,9 @@ public class SprayShoot : MonoBehaviour
 
     public int sprayDuration = 100;
 
+    public AudioClip clip;
+
+    private AudioSource audioSource;
 
     private bool rechargingSpray = false;
     public void Start()
@@ -30,6 +33,8 @@ public class SprayShoot : MonoBehaviour
         weaponGO.SetActive(true);
         playerController = GetComponent<Platformer.Mechanics.PlayerController>();
         playerWeaponController = GetComponent<PlayerWeaponController>();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = clip;
     }
 
     public void Update()
@@ -53,7 +58,7 @@ public class SprayShoot : MonoBehaviour
                         dir = -1;
                     }
                     SprayBullet sprayBullet = Instantiate(sprayParticles, sprayPosition.position, Quaternion.Euler(playerDir)).GetComponent<SprayBullet>();
-
+                    audioSource.Play();
                     sprayBullet.velocity = playerController.velocity.x;
                     sprayBullet.dir = dir;
                     sprayBullet.damage = sprayScriptable.damage;

@@ -26,6 +26,8 @@ public class WeaponSelector : MonoBehaviour
     private Platformer.Mechanics.PlayerController playerController;
     public GameObject player;
 
+    public GameObject fishObject;
+
     private void Start()
     {
         disableHover();
@@ -76,6 +78,9 @@ public class WeaponSelector : MonoBehaviour
         else playerWeaponCon.SetWeapon(currentWeapon);
 
         gameObject.SetActive(false);
+
+        if(currentWeapon.weaponName == "Espray")
+            fishObject.SetActive(true);
 
         #if UNITY_EDITOR
         Debug.Log(player);
