@@ -1,37 +1,5 @@
 ## Nia Mondo
 
-You can use the [editor on GitHub](https://github.com/osoc-es/cambio-climatico/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Nia Mondo es un videojuego creado con el fin de concienciar a la población sobre el desarrollo sostenible de acuerdo a la Agenda 2030 publicada por la ONU en 2015. De la mano del personaje principal, Arbo, podrás descubrir qué elementos son más nocivos para el medio ambiente y las consecuencias que pueden llegar a tener sobre la naturaleza.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/osoc-es/cambio-climatico/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Para más información podéis visitar la [página web del proyecto](https://osoc-es.github.io/nia-mondo), desde donde además se puede probar el juego.
